@@ -1,0 +1,20 @@
+.Navbar {
+    background-color: rgb(23, 150, 23);
+  }
+  
+  .Aboutus {
+    background: linear-gradient(
+      rgb(35, 133, 35),
+      rgb(14, 121, 14),
+      rgb(8, 63, 8),
+      rgb(1, 31, 1)
+    );
+    width: auto;
+    color: white;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  a {
+    color: white;
+  }

@@ -1,0 +1,71 @@
+h1 {
+    text-align: center;
+    font-size: 40px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  .Facilities {
+    border: 1px solid black;
+    background: linear-gradient(
+      rgb(34, 219, 34),
+      rgb(32, 192, 32),
+      rgb(17, 110, 17),
+      rgb(1, 31, 1)
+    );
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+  }
+  
+  .Attractions {
+    border: 1px solid black;
+    background: linear-gradient(
+      rgb(26, 185, 26),
+      rgb(17, 150, 17),
+      rgb(17, 110, 17),
+      rgb(1, 31, 1)
+    );
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+  }
+  
+  .Tickets {
+    border: 1px solid black;
+    background: linear-gradient(
+      rgb(42, 207, 42),
+      rgb(24, 170, 24),
+      rgb(17, 110, 17),
+      rgb(1, 31, 1)
+    );
+    box-shadow: 2px;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+  }
+  
+  .Rooms {
+    border: 1px solid black;
+    background: linear-gradient(
+      rgb(110, 216, 110),
+      rgb(24, 148, 24),
+      rgb(17, 110, 17),
+      rgb(1, 31, 1)
+    );
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+  }
+  
+  .home {
+    border: 1px solid black;
+    background: linear-gradient(
+      rgb(46, 163, 46),
+      rgb(16, 143, 16),
+      rgb(8, 63, 8),
+      rgb(1, 31, 1)
+    );
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+  }

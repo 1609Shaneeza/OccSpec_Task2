@@ -1,0 +1,14 @@
+.Form {
+    align-items: center;
+  }
+  
+  .Login {
+    text-align: center;
+    font-size: 20px;
+    border-radius: 5px;
+  }
+  
+  .Login:hover {
+    background-color: rgba(29, 173, 41, 0.973);
+    color: rgb(0, 0, 0);
+  }
