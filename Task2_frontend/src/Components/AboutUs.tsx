@@ -11,7 +11,7 @@ function AboutUs() {
             <div className="col-md-4">
               <br></br>
               <br></br>
-              <img src={Logo} alt="RZA Logo" width="300px" />
+              <img src={Logo} alt="RZA Logo" style={{ width: "100%" }} />
             </div>
             <div className="col-md-4">
               <h2>Contact Us</h2>

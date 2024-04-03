@@ -31,17 +31,17 @@ function Login() {
       <div className="Container text-center">
         <div className="login">
           <form onSubmit={handleSubmit}>
-            <MDBContainer className="my-5">
+            <MDBContainer className="my-auto">
               <MDBCard>
                 <MDBRow className="g-0">
                   <MDBCol lg="6" md="12">
-                    <MDBCardImage src={Logo} className="rounded-start w-90" />
+                    <MDBCardImage src={Logo} className="rounded-start w-90" style={{ width: "100%" }}/>
                   </MDBCol>
 
                   <MDBCol lg="6" md="12">
                     <MDBCardBody className="d-flex flex-column">
                       <div className="d-flex flex-row mt-2">
-                        <span className="h1 fw-bold mb-0">Bean & Brew</span>
+                        <span className="h1 fw-bold mb-auto">Riget Zoo Adventures</span>
                       </div>
 
                       <h5
@@ -50,22 +50,24 @@ function Login() {
                       >
                         Login into your account
                       </h5>
-
-                      <MDBInput
+                      <p>Email</p>
+                      <input
+                      className="Email"
                         onChange={(e) => setEmail(e.target.value)}
-                        label="Username"
                         id="Username"
                         type="email"
                         required
                       />
-                      <MDBInput
+                      <br></br>
+                      <p>Password</p>
+                      <input
+                      className="Password"
                         onChange={(e) => setPassword(e.target.value)}
-                        label="Password"
                         id="Password"
                         type={showPass ? "text" : "password"}
                         required
                       />
-
+                      <br></br>
                       <div className="d-flex justify-content-center mb-4">
                         <MDBCheckbox
                           name="flexCheck"

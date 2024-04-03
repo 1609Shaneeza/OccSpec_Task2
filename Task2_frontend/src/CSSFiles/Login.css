@@ -6,9 +6,37 @@
     text-align: center;
     font-size: 20px;
     border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
   }
   
   .Login:hover {
     background-color: rgba(29, 173, 41, 0.973);
     color: rgb(0, 0, 0);
+  }
+
+  .Email{
+    border-radius: 5px;
+    border: 1px solid green;
+    transition: border-color 0.3s;
+  }
+
+  .Password{
+    border-radius: 5px;
+    border: 1px solid green;
+  }
+
+  .Email:hover {
+    border: solid rgba(29, 173, 41, 0.973);
+  }
+
+  .Email:focus{
+    border-color: green;
+  }
+
+  .Password:hover {
+  border: solid rgba(29, 173, 41, 0.973);
+  }
+
+  .Password:focus {
+    border-color: green;
   }

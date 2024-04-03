@@ -7,6 +7,12 @@ import "./CSSFiles/Facilities.css"
 import "./CSSFiles/Homepage.css"
 import "./CSSFiles/Login.css"
 import "./CSSFiles/Navbar.css"
+import "./CSSFiles/Attractions.css"
+
+
+
+
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>

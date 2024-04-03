@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import Facilities from "../assets/Facilities.jpg";
-import Ticket from "../assets/Tickets.jpg";
-import Rooms from "../assets/Room.jpeg";
-import attractions from "../assets/Attractions.jpeg";
+import Facilities from "../assets/Facilities.png";
+import Ticket from "../assets/Animal2.png";
+import Rooms from "../assets/Room1.png";
+import attractions from "../assets/Attractions1.png";
 import { ATTRACTIONS, FACILITIES } from "../Constants/Constants";
 
 function Homepage() {
@@ -17,7 +17,7 @@ function Homepage() {
       <br></br>
       <br></br>
 
-      <div className="container text-center col col-lg-7">
+      <div className="container text-center col col-lg-auto">
         <div className="home">
           <div className="row">
             <div className="col col-lg-4">
@@ -43,7 +43,7 @@ function Homepage() {
               <div className="Facilities">
                 <div className="gallery">
                   <a href={FACILITIES}>
-                    <img src={Facilities} width="320px" />
+                    <img src={Facilities} style={{ width: "100%" }} />
                   </a>
                   <div className="desc">Facilities At RZA</div>
                 </div>
@@ -52,7 +52,7 @@ function Homepage() {
               <div className="Attractions">
                 <div className="gallery">
                   <a href={ATTRACTIONS}>
-                    <img src={attractions} width="320px" />
+                    <img src={attractions} style={{ width: "100%" }} />
                   </a>
                   <div className="desc">Attractions at RZA</div>
                 </div>
@@ -63,7 +63,7 @@ function Homepage() {
               <div className="Tickets">
                 <div className="gallery">
                   <a href="">
-                    <img src={Ticket} width="320px" />
+                    <img src={Ticket} style={{ width: "100%" }} />
                   </a>
                   <div className="desc">Book Tickets</div>
                 </div>
@@ -72,7 +72,7 @@ function Homepage() {
               <div className="Rooms">
                 <div className="gallery">
                   <a href="">
-                    <img src={Rooms} width="310px" />
+                    <img src={Rooms} style={{ width: "100%" }} />
                   </a>
                   <div className="desc">Book a Stay at our hotel</div>
                 </div>

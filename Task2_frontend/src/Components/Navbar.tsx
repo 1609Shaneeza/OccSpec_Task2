@@ -6,7 +6,7 @@ import { HOME, LOGIN } from "../Constants/Constants";
 function Navbar() {
   return (
     <>
-      <BootstrapNavbar className="Navbar">
+      <BootstrapNavbar expand="auto" className="Navbar">
         <div className="container">
           <Link to={HOME} className="navbar-brand">
             <img src={Logo} alt="RZA Logo" width="100px" />
@@ -15,15 +15,12 @@ function Navbar() {
           <BootstrapNavbar.Collapse id="navbarText">
             <Nav className="me-auto">
               <br></br>
-              <br></br>
               <Link to={HOME} className="navbar-brand">
                 HOME
               </Link>
-              <br></br>
               <Link to="" className="navbar-brand">
                 Educational Materials
               </Link>
-              <br></br>
               <Link to="" className="navbar-brand">
                 Book Tickets
               </Link>
