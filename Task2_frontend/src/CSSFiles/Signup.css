@@ -1,0 +1,26 @@
+input {
+  border: 1px solid green;
+  border-radius: 5px;
+  width: 100%;
+  transition: border-color 0.3s;
+}
+
+input:hover {
+  border: solid green;
+}
+
+input:focus {
+  border-color: green;
+}
+
+.Signup {
+  text-align: center;
+  font-size: 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.Signup:hover {
+    background-color: rgba(29, 173, 41, 0.973);
+    color: rgb(0, 0, 0);
+}

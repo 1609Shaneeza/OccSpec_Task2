@@ -18,11 +18,13 @@
     border-radius: 5px;
     border: 1px solid green;
     transition: border-color 0.3s;
+    width: 100%;
   }
 
   .Password{
     border-radius: 5px;
     border: 1px solid green;
+    transition: border-color 0.3s;
   }
 
   .Email:hover {

@@ -8,6 +8,7 @@ import "./CSSFiles/Homepage.css"
 import "./CSSFiles/Login.css"
 import "./CSSFiles/Navbar.css"
 import "./CSSFiles/Attractions.css"
+import "./CSSFiles/Signup.css"
 
 
 

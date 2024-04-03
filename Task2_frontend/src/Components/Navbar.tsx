@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import Logo from "../assets/RZA_LOGO.png";
 import { Navbar as BootstrapNavbar, Nav } from "react-bootstrap";
-import { HOME, LOGIN } from "../Constants/Constants";
+import { HOME, LOGIN, SIGNUP } from "../Constants/Constants";
 
 function Navbar() {
   return (
     <>
-      <BootstrapNavbar expand="auto" className="Navbar">
+      <BootstrapNavbar expand="lg" className="Navbar">
         <div className="container">
           <Link to={HOME} className="navbar-brand">
             <img src={Logo} alt="RZA Logo" width="100px" />
@@ -24,7 +24,7 @@ function Navbar() {
               <Link to="" className="navbar-brand">
                 Book Tickets
               </Link>
-              <Link to="" className="navbar-brand">
+              <Link to={SIGNUP} className="navbar-brand">
                 Signup
               </Link>
               <Link to={LOGIN} className="navbar-brand">
