@@ -1,7 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/RZA_LOGO.png";
 import { Navbar as BootstrapNavbar, Nav } from "react-bootstrap";
-import { DASHBOARD, EDUCATION, HOME, LOGIN, SIGNUP } from "../Constants/Constants";
+import {
+  DASHBOARD,
+  EDUCATION,
+  HOME,
+  LOGIN,
+  SIGNUP,
+} from "../Constants/Constants";
 import { AccountCredentialsContext } from "./CredentialsProvider";
 import { useContext, useEffect, useState } from "react";
 
@@ -14,18 +20,17 @@ function Navbar() {
   const handleLogout = () => {
     console.log("Before logout - credentialsContext:", credentialsContext);
     credentialsContext?.setAccountDetails({ Email: "", Password: "" });
-    setIsLoggedIn(true);
+    setIsLoggedIn(false);
     navigate(LOGIN);
     setTimeout(() => {
       console.log("After logout - credentialsContext:", credentialsContext);
-      setIsLoggedIn(true);
+      setIsLoggedIn(false);
     }, 0);
   };
 
   useEffect(() => {
     setIsLoggedIn(!!credentialsContext?.accountDetails);
   }, [credentialsContext?.accountDetails]);
-
 
   return (
     <>
