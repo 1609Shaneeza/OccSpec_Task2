@@ -1,7 +1,6 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useContext, useEffect, useState } from "react";
 import Logo from "../assets/RZA_LOGO.png";
 import {
-  MDBInput,
   MDBCheckbox,
   MDBCard,
   MDBCardBody,
@@ -11,16 +10,21 @@ import {
   MDBRow,
 } from "mdb-react-ui-kit";
 import axios from "axios";
+import { AccountCredentialsContext } from "./CredentialsProvider";
+import { useNavigate } from "react-router-dom";
+import { DASHBOARD, HOME, LOGIN } from "../Constants/Constants";
 
 function Login() {
   useEffect(() => {
     document.title = "Login";
   });
 
-  const [email, setEmail] = useState("");
+  const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [showPass, setShowPass] = useState(false);
+  const navigate = useNavigate();
+  const credentials_Context = useContext(AccountCredentialsContext);
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -28,23 +32,23 @@ function Login() {
 
     try {
       const Response = await axios.post("http://localhost:5000/Login", {
-        Email: email,
+        Email: Email,
         Password: Password,
       });
 
-      // if (Response.data["success"] && Response.data["Account"] == true) {
-      //   credentials_Context?.setAccountDetails({ email, Password });
-      //   navigate(HOME);
-      // } else if (
-      //   Response.data["success"] &&
-      //   Response.data["Account"] == false
-      // ) {
-      //   credentials_Context?.setAccountDetails({ Username, Password });
-      //   navigate(DASHBOARD);
-      // } else {
-      //   console.log("Doesnot exist");
-      //   navigate(LOGIN);
-      // }
+      if (Response.data["success"] && Response.data["Account"] == true) {
+        credentials_Context?.setAccountDetails({Email, Password});
+        navigate(HOME);
+      } else if (
+        Response.data["success"] &&
+        Response.data["Account"] == false
+      ) {
+        credentials_Context?.setAccountDetails({ Email, Password });
+        navigate(DASHBOARD);
+      } else {
+        console.log("Doesnot exist");
+        navigate(LOGIN);
+      }
 
       setMessage(JSON.stringify(Response.data));
     } catch (error) {

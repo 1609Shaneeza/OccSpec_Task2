@@ -1,4 +1,4 @@
-import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBCheckbox } from "mdb-react-ui-kit";
+import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBCheckbox } from "mdb-react-ui-kit";
 import { useEffect, useState, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import RZALogo from "../assets/RZA_LOGO.png";

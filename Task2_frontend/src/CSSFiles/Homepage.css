@@ -1,103 +1,113 @@
+body {
+  height: 100%; /* Used to enable scrolling */
+  background: linear-gradient(
+    rgb(255, 255, 255),
+    rgb(228, 240, 228) 0%,
+    rgb(207, 237, 207) 51%,
+    rgb(156, 203, 156) 85%
+  );
+}
+
 h1 {
-    text-align: center;
-    font-size: 40px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-  }
-  
-  .Facilities {
-    border: 1px solid black;
-    background: linear-gradient(
-      rgb(34, 219, 34),
-      rgb(32, 192, 32),
-      rgb(17, 110, 17),
-      rgb(1, 31, 1)
-    );
-    text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: white;
-  }
-  
-  .Attractions {
-    border: 1px solid black;
-    background: linear-gradient(
-      rgb(26, 185, 26),
-      rgb(17, 150, 17),
-      rgb(17, 110, 17),
-      rgb(1, 31, 1)
-    );
-    text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: white;
-  }
-  
-  .Tickets {
-    border: 1px solid black;
-    background: linear-gradient(
-      rgb(42, 207, 42),
-      rgb(24, 170, 24),
-      rgb(17, 110, 17),
-      rgb(1, 31, 1)
-    );
-    box-shadow: 2px;
-    text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: white;
-  }
-  
-  .Rooms {
-    border: 1px solid black;
-    background: linear-gradient(
-      rgb(110, 216, 110),
-      rgb(24, 148, 24),
-      rgb(17, 110, 17),
-      rgb(1, 31, 1)
-    );
-    text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: white;
-  }
-  
-  .home {
-    border: 1px solid black;
-    background: linear-gradient(
-      rgb(46, 163, 46),
-      rgb(16, 143, 16),
-      rgb(8, 63, 8),
-      rgb(1, 31, 1)
-    );
-    text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: white;
-  }
+  text-align: center;
+  font-size: 40px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 
-  /* Add media queries for responsiveness */
+.Facilities {
+  border: 1px solid black;
+  background: linear-gradient(
+    rgb(34, 219, 34),
+    rgb(32, 192, 32),
+    rgb(17, 110, 17),
+    rgb(1, 31, 1)
+  );
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+}
+
+.Attractions {
+  border: 1px solid black;
+  background: linear-gradient(
+    rgb(26, 185, 26),
+    rgb(17, 150, 17),
+    rgb(17, 110, 17),
+    rgb(1, 31, 1)
+  );
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+}
+
+.Tickets {
+  border: 1px solid black;
+  background: linear-gradient(
+    rgb(42, 207, 42),
+    rgb(24, 170, 24),
+    rgb(17, 110, 17),
+    rgb(1, 31, 1)
+  );
+  box-shadow: 2px;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+}
+
+.Rooms {
+  border: 1px solid black;
+  background: linear-gradient(
+    rgb(110, 216, 110),
+    rgb(24, 148, 24),
+    rgb(17, 110, 17),
+    rgb(1, 31, 1)
+  );
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+}
+
+.home {
+  border: 1px solid black;
+  background: linear-gradient(
+    rgb(46, 163, 46),
+    rgb(16, 143, 16),
+    rgb(8, 63, 8),
+    rgb(1, 31, 1)
+  );
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+}
+
+input::-ms-reveal {
+  display: none;
+}
+
+/* Add media queries for responsiveness */
 @media (max-width: 1000px) {
-    .col {
-      flex-basis: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-      .gallery {
-        height: 200px; /* Set a fixed height for all gallery divs */
-        display: flex;
-        flex-direction: column;
-      }
-    
-    
-      .gallery img {
-        max-width: 100%; /* Ensure images don't exceed the width of their containers */
-        max-height: 100%; /* Ensure images don't exceed the height of their containers */
-      } 
-  
+  .col {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .gallery {
+    height: 200px; /* Set a fixed height for all gallery divs */
+    display: flex;
+    flex-direction: column;
   }
 
-  
-  /* Additional styling for smaller screens if needed */
-  @media (max-width: 576px) {
-    h1 {
-      font-size: 30px;
-    }
+  .gallery img {
+    max-width: 100%; /* Ensure images don't exceed the width of their containers */
+    max-height: 100%; /* Ensure images don't exceed the height of their containers */
   }
-  
+}
+
+/* Additional styling for smaller screens if needed */
+@media (max-width: 576px) {
+  h1 {
+    font-size: 30px;
+  }
+}

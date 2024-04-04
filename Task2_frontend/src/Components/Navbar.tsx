@@ -1,9 +1,32 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/RZA_LOGO.png";
 import { Navbar as BootstrapNavbar, Nav } from "react-bootstrap";
-import { HOME, LOGIN, SIGNUP } from "../Constants/Constants";
+import { DASHBOARD, EDUCATION, HOME, LOGIN, SIGNUP } from "../Constants/Constants";
+import { AccountCredentialsContext } from "./CredentialsProvider";
+import { useContext, useEffect, useState } from "react";
 
 function Navbar() {
+  const credentialsContext = useContext(AccountCredentialsContext);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    !!credentialsContext?.accountDetails
+  );
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    console.log("Before logout - credentialsContext:", credentialsContext);
+    credentialsContext?.setAccountDetails({ Email: "", Password: "" });
+    setIsLoggedIn(true);
+    navigate(LOGIN);
+    setTimeout(() => {
+      console.log("After logout - credentialsContext:", credentialsContext);
+      setIsLoggedIn(true);
+    }, 0);
+  };
+
+  useEffect(() => {
+    setIsLoggedIn(!!credentialsContext?.accountDetails);
+  }, [credentialsContext?.accountDetails]);
+
+
   return (
     <>
       <BootstrapNavbar expand="lg" className="Navbar">
@@ -18,7 +41,7 @@ function Navbar() {
               <Link to={HOME} className="navbar-brand">
                 HOME
               </Link>
-              <Link to="" className="navbar-brand">
+              <Link to={EDUCATION} className="navbar-brand">
                 Educational Materials
               </Link>
               <Link to="" className="navbar-brand">
@@ -27,9 +50,27 @@ function Navbar() {
               <Link to={SIGNUP} className="navbar-brand">
                 Signup
               </Link>
-              <Link to={LOGIN} className="navbar-brand">
-                Login
-              </Link>
+              {/* <Link to={DASHBOARD} className="navbar-brand">
+                Dashboard
+              </Link> */}
+              <nav>
+                <div className="d-flex align-items-center">
+                  {isLoggedIn ? (
+                    // If user is logged in, show logout option
+                    <button
+                      className="btn btn-link nav-link"
+                      onClick={handleLogout}
+                    >
+                      Logout
+                    </button>
+                  ) : (
+                    // If user is not logged in, show login option
+                    <Link to={LOGIN} className="btn btn-link nav-link">
+                      Login
+                    </Link>
+                  )}
+                </div>
+              </nav>
             </Nav>
           </BootstrapNavbar.Collapse>
         </div>

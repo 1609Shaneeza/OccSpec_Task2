@@ -9,24 +9,27 @@ import NotFound from "./Components/NotFound";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
 import Dashboard from "./Components/StaffDashBoard";
+import CredentialProvider from "./Components/CredentialsProvider";
 
 
 function App() {
 
   return (
     <>
-      <Navbar />
+      <CredentialProvider>
+        <Navbar />
 
-      <Routes>
-        <Route path={HOME} index element={<Homepage />} />
-        <Route path={FACILITIES} index element={<Facilities />} />
-        <Route path={ATTRACTIONS} index element={<Attractions />} />
-        <Route path={NOT_FOUND} index element={<NotFound />} />
-        <Route path={LOGIN} index element={<Login />} />
-        <Route path={SIGNUP} index element={<Signup />} />
-        <Route path={DASHBOARD} index element={<Dashboard />} />
-      </Routes>
-      <AboutUs />
+        <Routes>
+          <Route path={HOME} index element={<Homepage />} />
+          <Route path={FACILITIES} index element={<Facilities />} />
+          <Route path={ATTRACTIONS} index element={<Attractions />} />
+          <Route path={NOT_FOUND} index element={<NotFound />} />
+          <Route path={LOGIN} index element={<Login />} />
+          <Route path={SIGNUP} index element={<Signup />} />
+          <Route path={DASHBOARD} index element={<Dashboard />} />
+        </Routes>
+        <AboutUs />
+      </CredentialProvider>
     </>
   );
 }
