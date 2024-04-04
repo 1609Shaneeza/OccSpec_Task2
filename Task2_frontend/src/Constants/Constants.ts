@@ -7,6 +7,7 @@ const SIGNUP = "/Signup";
 const TICKETS = "/TicketBookings";
 const ROOMS = "/RoomBookings";
 const NOT_FOUND = "/NotFound";
+const DASHBOARD = "/StaffDashboard";
 
 export {
   HOME,
@@ -17,5 +18,6 @@ export {
   SIGNUP,
   TICKETS,
   ROOMS,
-  NOT_FOUND
+  NOT_FOUND,
+  DASHBOARD,
 };

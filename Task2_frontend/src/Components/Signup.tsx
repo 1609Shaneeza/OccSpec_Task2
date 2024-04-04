@@ -2,6 +2,8 @@ import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBCheckb
 import { useEffect, useState, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import RZALogo from "../assets/RZA_LOGO.png";
+import axios from "axios";
+import { LOGIN } from "../Constants/Constants";
 
 
 function Signup() {
@@ -37,6 +39,29 @@ function Signup() {
           return;
         } else {
           setMessage("Account Created");
+        }
+
+
+        try {
+          const Response = await axios.post("http://localhost:5000/SignUp", {
+            Name: Name,
+            Surname: Surname,
+            Password: Password,
+            ConfirmPassword: ConfirmPassword,
+            Email: Email,
+          });
+
+          if (Response.data["success"]) {
+            navigate(LOGIN);
+          }
+
+          setMessage(JSON.stringify(Response.data));
+        } catch (error) {
+          if (axios.isAxiosError(error)) {
+            setMessage(error.message);
+          } else {
+            setMessage(String(error));
+          }
         }
 
 

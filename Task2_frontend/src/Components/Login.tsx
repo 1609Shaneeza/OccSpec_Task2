@@ -10,6 +10,7 @@ import {
   MDBContainer,
   MDBRow,
 } from "mdb-react-ui-kit";
+import axios from "axios";
 
 function Login() {
   useEffect(() => {
@@ -24,6 +25,35 @@ function Login() {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     setMessage("");
+
+    try {
+      const Response = await axios.post("http://localhost:5000/Login", {
+        Email: email,
+        Password: Password,
+      });
+
+      // if (Response.data["success"] && Response.data["Account"] == true) {
+      //   credentials_Context?.setAccountDetails({ email, Password });
+      //   navigate(HOME);
+      // } else if (
+      //   Response.data["success"] &&
+      //   Response.data["Account"] == false
+      // ) {
+      //   credentials_Context?.setAccountDetails({ Username, Password });
+      //   navigate(DASHBOARD);
+      // } else {
+      //   console.log("Doesnot exist");
+      //   navigate(LOGIN);
+      // }
+
+      setMessage(JSON.stringify(Response.data));
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        setMessage(error.message);
+      } else {
+        setMessage(String(error));
+      }
+    }
   };
 
   return (
