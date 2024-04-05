@@ -27,7 +27,7 @@ logins = {}
 @app.route('/Login', methods=['POST'])
 def login_details():
     print("Request received.")
-    with sqlite3.connect("RZADatabase.db") as conn:
+    with sqlite3.connect("Task2_backend\RZADatabase.db") as conn:
         if request.method == 'POST':
             Email = request.json.get('Email')
             password = request.json.get('Password').encode("UTF-8")
@@ -61,10 +61,10 @@ def login_details():
                                     if roleStaff == "Admin":
                                         Role = "Admin"
                                         print(Role)
-                                        return jsonify({'success': True, 'message': 'Login successful', 'Account':False, 'Role': Role})
-                            Role = "Staff"
-                            print(Role)
-                            return jsonify({'success': True, 'message': 'Login successful', 'Account':False, 'Role': Role})
+                                        return jsonify({'success': True, 'message': 'Login successful', 'Account':False, 'Role': Role})          
+                                Role = "Staff"
+                                print(Role)
+                                return jsonify({'success': True, 'message': 'Login successful', 'Account':False, 'Role': Role})
                         else:
                             return jsonify({'success': False, 'message': 'Incorrect login details'})
                     else:
@@ -95,7 +95,7 @@ def login_details():
 #Customer signup
 @app.route('/SignUp', methods=['POST'])
 def Customer_SignUp():
-    with sqlite3.connect("RZADatabase.db") as conn:
+    with sqlite3.connect("Task2_backend\RZADatabase.db") as conn:
         print("Request Recieved")
         Name = request.json.get('Name')
         Surname = request.json.get('Surname')
@@ -131,6 +131,38 @@ def Customer_SignUp():
             return jsonify({'success': False, 'message': 'Internal Server Error'}), 500
         
 ###########################################################################################################
+
+
+#PreOrder Menu
+@app.route('/EducationalMaterials', methods=['GET'])
+def EducationalMaterials():
+    with sqlite3.connect("Task2_backend\RZADatabase.db") as conn:
+        try:
+            query = """Select * From EducationalMaterials"""
+            cu = conn.cursor()
+            cu.execute(query)
+            result = cu.fetchall()
+            MaterialsList = []
+            for i in result:
+                Title = i[1]
+                Description = i[2]
+                Url = i[3]
+                Habitat = i[4]
+                Conservation = i[5]
+                json = {
+                    "Title": Title,
+                    "Description": Description,
+                    "Url": Url,
+                    "Habitat": Habitat,
+                    "Conservation": Conservation,
+                }
+                MaterialsList.append(json)
+            return jsonify({"result":MaterialsList})
+        except Error as e:
+            print(e)
+
+
+###################################################################################################
         
 
 if __name__ == "__main__":
