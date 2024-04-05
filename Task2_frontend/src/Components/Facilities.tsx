@@ -21,7 +21,7 @@ function Facilities() {
       <div className="responsive">
         <div className="gallery">
           <a>
-            <img src={Cafe} style={{ width: "100%" }}/>
+            <img src={Cafe} width="270" height="200" />
           </a>
           <div className="desc">
             <h4>Our Cafe at RZA</h4>
@@ -38,7 +38,7 @@ function Facilities() {
       <div className="responsive">
         <div className="gallery">
           <a>
-            <img src={Safari} style={{ width: "100%" }}/>
+            <img src={Safari} width="270" height="200" />
           </a>
           <div className="desc">
             <h4>Our Safar-Style Zoo</h4>
@@ -55,7 +55,7 @@ function Facilities() {
       <div className="responsive">
         <div className="gallery">
           <a>
-            <img src={PlayArea} style={{ width: "100%"}}/>
+            <img src={PlayArea} width="270" height="200" />
           </a>
           <div className="desc">
             <h4>Play Area for Children</h4>
@@ -72,7 +72,7 @@ function Facilities() {
       <div className="responsive">
         <div className="gallery">
           <a>
-            <img src={Room} style={{ width: "100%" }}/>
+            <img src={Room} width="270" height="200" />
           </a>
           <div className="desc">
             <h4>Our on-site Hotel</h4>
@@ -92,7 +92,7 @@ function Facilities() {
       <div className="responsive">
         <div className="gallery">
           <a>
-            <img src={Lake} style={{ width: "100%" }}/>
+            <img src={Lake} width="270" height="200" />
           </a>
           <div className="desc">
             <h5>Lake At RZA</h5>
@@ -109,7 +109,7 @@ function Facilities() {
       <div className="responsive">
         <div className="gallery">
           <a>
-            <img src={Accessibility} style={{ width: "100%" }}/>
+            <img src={Accessibility} width="270" height="200" />
           </a>
           <div className="desc">
             <h4>Accessibility</h4>
@@ -126,7 +126,7 @@ function Facilities() {
       <div className="responsive">
         <div className="gallery">
           <a>
-            <img src={CarPark} style={{ width: "100%" }}/>
+            <img src={CarPark} width="270" height="200" />
           </a>
           <div className="desc">
             <h4>Car Park At RZA</h4>
@@ -143,7 +143,7 @@ function Facilities() {
       <div className="responsive">
         <div className="gallery">
           <a>
-            <img src={restaurant} style={{ width: "100%" }}/>
+            <img src={restaurant} width="270" height="200" />
           </a>
           <div className="desc">
             <h4>Restaurant at RZA</h4>

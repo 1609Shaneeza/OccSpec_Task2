@@ -43,7 +43,7 @@ function Homepage() {
               <div className="Facilities">
                 <div className="gallery">
                   <a href={FACILITIES}>
-                    <img src={Facilities} style={{ width: "100%" }} />
+                    <img src={Facilities} width="300" height="200" />
                   </a>
                   <div className="desc">Facilities At RZA</div>
                 </div>
@@ -52,7 +52,7 @@ function Homepage() {
               <div className="Attractions">
                 <div className="gallery">
                   <a href={ATTRACTIONS}>
-                    <img src={attractions} style={{ width: "100%" }} />
+                    <img src={attractions} width="300" height="200" />
                   </a>
                   <div className="desc">Attractions at RZA</div>
                 </div>
@@ -63,7 +63,7 @@ function Homepage() {
               <div className="Tickets">
                 <div className="gallery">
                   <a href="">
-                    <img src={Ticket} style={{ width: "100%" }} />
+                    <img src={Ticket} width="300" height="200" />
                   </a>
                   <div className="desc">Book Tickets</div>
                 </div>
@@ -72,7 +72,7 @@ function Homepage() {
               <div className="Rooms">
                 <div className="gallery">
                   <a href="">
-                    <img src={Rooms} style={{ width: "100%" }}  />
+                    <img src={Rooms} width="300" height="200" />
                   </a>
                   <div className="desc">Book a Stay at our hotel</div>
                 </div>
