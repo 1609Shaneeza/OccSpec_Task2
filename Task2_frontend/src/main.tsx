@@ -9,8 +9,7 @@ import "./CSSFiles/Login.css"
 import "./CSSFiles/Navbar.css"
 import "./CSSFiles/Attractions.css"
 import "./CSSFiles/Signup.css"
-
-
+import "./CSSFiles/Dashboard.css"
 
 
 

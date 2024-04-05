@@ -1,0 +1,31 @@
+div.Dashboard {
+  border: 1px solid #ccc;
+  background: linear-gradient(
+    rgb(42, 207, 42),
+    rgb(24, 170, 24),
+    rgb(17, 110, 17),
+    rgb(1, 31, 1)
+  );
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  text-align: center;
+  height: auto; /* Set a fixed height for all gallery divs */
+}
+
+@media only screen and (max-width: 900px) {
+  .responsive {
+    width: calc(100% - 12px); /* Adjusted width for responsiveness */
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .responsive {
+    width: calc(100% - 12px); /* Adjusted width for responsiveness */
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .responsive {
+    width: 100%; /* Full width for smaller screens */
+  }
+}

@@ -72,7 +72,7 @@ function Homepage() {
               <div className="Rooms">
                 <div className="gallery">
                   <a href="">
-                    <img src={Rooms} style={{ width: "100%" }} />
+                    <img src={Rooms} style={{ width: "100%" }}  />
                   </a>
                   <div className="desc">Book a Stay at our hotel</div>
                 </div>
