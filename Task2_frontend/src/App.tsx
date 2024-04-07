@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Homepage from "./Components/Homepage";
 import Navbar from "./Components/Navbar";
 import AboutUs from "./Components/AboutUs";
-import { ATTRACTIONS, DASHBOARD, EDUCATION, FACILITIES, HOME, LOGIN, NOT_FOUND, SIGNUP, TICKETS } from "./Constants/Constants";
+import { ATTRACTIONS, CHECKOUT, DASHBOARD, EDUCATION, FACILITIES, HOME, LOGIN, NOT_FOUND, SIGNUP, TICKETS } from "./Constants/Constants";
 import Facilities from "./Components/Facilities";
 import Attractions from "./Components/Attractions";
 import NotFound from "./Components/NotFound";
@@ -12,6 +12,7 @@ import Dashboard from "./Components/StaffDashBoard";
 import CredentialProvider from "./Components/CredentialsProvider";
 import EducationMaterials1 from "./Components/EducationalMaterials1";
 import TicketBooking from "./Components/TicketBooking";
+import Checkout from "./Components/Checkout";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path={DASHBOARD} index element={<Dashboard />} />
           <Route path={EDUCATION} index element={<EducationMaterials1 />} />
           <Route path={TICKETS} index element={<TicketBooking />} />
+          <Route path={CHECKOUT} index element={<Checkout />} />
         </Routes>
         <AboutUs />
       </CredentialProvider>

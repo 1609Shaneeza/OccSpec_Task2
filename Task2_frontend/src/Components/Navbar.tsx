@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/RZA_LOGO.png";
 import { Navbar as BootstrapNavbar, Nav } from "react-bootstrap";
 import {
+  CHECKOUT,
   DASHBOARD,
   EDUCATION,
   HOME,
@@ -55,9 +56,9 @@ function Navbar() {
               <Link to={SIGNUP} className="navbar-brand">
                 Signup
               </Link>
-              {/* <Link to={DASHBOARD} className="navbar-brand">
-                Dashboard
-              </Link> */}
+              <Link to={CHECKOUT} className="navbar-brand">
+                Checkout
+              </Link>
               <nav>
                 <div className="d-flex align-items-center">
                   {isLoggedIn ? (

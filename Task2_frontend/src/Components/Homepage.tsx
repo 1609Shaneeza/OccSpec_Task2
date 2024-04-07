@@ -3,7 +3,7 @@ import Facilities from "../assets/Facilities.png";
 import Ticket from "../assets/Animal2.png";
 import Rooms from "../assets/Room1.png";
 import attractions from "../assets/Attractions1.png";
-import { ATTRACTIONS, FACILITIES } from "../Constants/Constants";
+import { ATTRACTIONS, FACILITIES, TICKETS } from "../Constants/Constants";
 
 function Homepage() {
   useEffect(() => {
@@ -62,7 +62,7 @@ function Homepage() {
               <br></br>
               <div className="Tickets">
                 <div className="gallery">
-                  <a href="">
+                  <a href={TICKETS}>
                     <img src={Ticket} width="300" height="200" />
                   </a>
                   <div className="desc">Book Tickets</div>
