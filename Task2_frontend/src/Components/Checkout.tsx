@@ -30,9 +30,9 @@ function Checkout() {
   return (
     <>
       <h1>Payment Details</h1>
-      <div className="container">
+      <div className="container text-center mx-9 py-6">
         <div className="row">
-          <div className=" Checkout col col-lg-6 mx-5">
+          <div className="Checkout col col-lg-6">
             <br />
             <form onSubmit={handleSubmit}>
               <br />
