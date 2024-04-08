@@ -122,7 +122,7 @@ function TicketBooking() {
                       onChange={(e) => setNumOfChildren(e.target.value)}
                       id="NumberOfChildren"
                       type="Number"
-                      min={1}
+                      min={0}
                       max={30}
                       required
                     />

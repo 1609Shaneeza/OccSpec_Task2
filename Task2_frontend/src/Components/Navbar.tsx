@@ -56,9 +56,9 @@ function Navbar() {
               <Link to={SIGNUP} className="navbar-brand">
                 Signup
               </Link>
-              <Link to={CHECKOUT} className="navbar-brand">
+              {/* <Link to={CHECKOUT} className="navbar-brand">
                 Checkout
-              </Link>
+              </Link> */}
               <nav>
                 <div className="d-flex align-items-center">
                   {isLoggedIn ? (
