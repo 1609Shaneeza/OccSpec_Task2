@@ -1,15 +1,55 @@
 import { DatePicker, DatePickerInput } from "@carbon/react";
 import { MDBCol, MDBRow } from "mdb-react-ui-kit";
-import { FormEvent, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
+import { TicketBookingContext } from "./TicketBookingProvider";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { HOME } from "../Constants/Constants";
 
 function TicketBooking() {
   const [Email, setEmail] = useState("");
   const [Message, setMessage] = useState("");
+  const [EdVisit, setEdVisit] = useState("");
+  const [date, setDate] = useState(Date());
+  const [NumOfAdult, setNumOfAdult] = useState<any | null>(null);
+  const [NumOfChildren, setNumOfChildren] = useState<any | null>(null);
+  const Ticket_Context = useContext(TicketBookingContext);
+  const navigate = useNavigate();
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     setMessage("");
+
+    try {
+      const Response = await axios.post(
+        "http://localhost:5000/EmailCheckTicketsBooking",
+        {
+          Email: Email,
+        }
+      );
+
+      setMessage(JSON.stringify(Response.data));
+
+      if (Response.data["success"] == true) {
+        Ticket_Context?.setTicketBooking({
+          Email,
+          EdVisit,
+          date,
+          NumOfAdult,
+          NumOfChildren,
+        });
+        navigate(HOME)
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        setMessage(error.message);
+      } else {
+        setMessage(String(error));
+      }
+    }
   };
+
+  console.log(date);
 
   return (
     <>
@@ -42,56 +82,33 @@ function TicketBooking() {
                 <MDBRow>
                   <MDBCol>
                     <DatePicker>
-                      <DatePickerInput
+                      <p>Date</p>
+                      <input
+                        onChange={(e) => setDate(e.target.value)}
                         placeholder="mm/dd/yyyy"
-                        labelText="Date Picker label"
-                        id="date-picker-single"
-                        size="md"
+                        id="date-picker"
                         type="date"
                       />
                     </DatePicker>
                   </MDBCol>
                   <MDBCol className="Visit">
                     <p>Is this a Educational Visit ?</p>
-                    <div className="EducationalVisit">
-                      <div className="form-check form-check-inline">
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="inlineRadioOptions"
-                          id="inlineRadio1"
-                          value="option1"
-                        />
-                        <label
-                          className="form-check-label"
-                          htmlFor="inlineRadio1"
-                        >
-                          Yes
-                        </label>
-                      </div>
-                      <div className="form-check form-check-inline">
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="inlineRadioOptions"
-                          id="inlineRadio2"
-                          value="option2"
-                        />
-                        <label
-                          className="form-check-label"
-                          htmlFor="inlineRadio2"
-                        >
-                          No
-                        </label>
-                      </div>
-                    </div>
+                    <select
+                      className="form-select"
+                      aria-label="Default select"
+                      onChange={(e) => setEdVisit(e.target.value)}
+                    >
+                      <option selected>Select an option</option>
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
+                    </select>
                   </MDBCol>
                 </MDBRow>
                 <MDBRow>
                   <MDBCol>
                     <p>Number Of Adults</p>
                     <input
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={(e) => setNumOfAdult(e.target.value)}
                       id="NumberOfAdults"
                       type="Number"
                       min={1}
@@ -102,7 +119,7 @@ function TicketBooking() {
                   <MDBCol>
                     <p>Number Of Children</p>
                     <input
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={(e) => setNumOfChildren(e.target.value)}
                       id="NumberOfChildren"
                       type="Number"
                       min={1}

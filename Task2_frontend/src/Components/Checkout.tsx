@@ -83,6 +83,9 @@ function Checkout() {
                 </MDBCol>
               </MDBRow>
               <br />
+              <button className="Login" type="submit">
+                Checkout
+              </button>
             </form>
           </div>
         </div>
