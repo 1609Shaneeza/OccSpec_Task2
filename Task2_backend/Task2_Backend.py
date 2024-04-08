@@ -11,10 +11,8 @@ from datetime import datetime as dt
 
 
 
-with open ("Task2_backend\Task2.json", "r") as file:
+with open ("Task2_backend\\Task2.json", "r") as file:
     j = json.loads(file.read())
-
-print(j)
 
 
 app = Flask(__name__)
@@ -27,7 +25,7 @@ logins = {}
 @app.route('/Login', methods=['POST'])
 def login_details():
     print("Request received.")
-    with sqlite3.connect("Task2_backend\RZADatabase.db") as conn:
+    with sqlite3.connect("Task2_backend\\RZADatabase.db") as conn:
         if request.method == 'POST':
             Email = request.json.get('Email')
             password = request.json.get('Password').encode("UTF-8")
@@ -95,7 +93,7 @@ def login_details():
 #Customer signup
 @app.route('/SignUp', methods=['POST'])
 def Customer_SignUp():
-    with sqlite3.connect("Task2_backend\RZADatabase.db") as conn:
+    with sqlite3.connect("Task2_backend\\RZADatabase.db") as conn:
         print("Request Recieved")
         Name = request.json.get('Name')
         Surname = request.json.get('Surname')
@@ -136,7 +134,7 @@ def Customer_SignUp():
 #PreOrder Menu
 @app.route('/EducationalMaterials', methods=['GET'])
 def EducationalMaterials():
-    with sqlite3.connect("Task2_backend\RZADatabase.db") as conn:
+    with sqlite3.connect("Task2_backend\\RZADatabase.db") as conn:
         try:
             query = """Select * From EducationalMaterials"""
             cu = conn.cursor()
@@ -163,7 +161,29 @@ def EducationalMaterials():
 
 
 ###################################################################################################
-        
+
+#Email Check For Ticket Booking
+#this sections checks whether the email inputted by the user exists in the database
+
+@app.route('/EmailCheckTicketsBooking', methods=['POST'])
+def EmailCheckTickets():
+     with sqlite3.connect("Task2_backend\\RZADatabase.db") as conn:
+        try:
+            print("request recieved")
+            Email = request.json.get('Email')
+            query = """Select Email From CustomerDetails Where Email = ?"""
+            cu = conn.cursor()
+            cu.execute(query,(Email,))
+            result = cu.fetchall()
+            print(Email)
+            if result:
+                print("Email Exists")
+                return jsonify({'message': 'Email exists', 'success': True })
+            else:
+                print("Email Doesnot exists")
+                return jsonify({'message':'Email Doesnot Exists', 'success': False})
+        except Error as e:
+            print(e)
 
 if __name__ == "__main__":
     app.run()
