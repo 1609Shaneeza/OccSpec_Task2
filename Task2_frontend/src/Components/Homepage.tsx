@@ -3,7 +3,7 @@ import Facilities from "../assets/Facilities.png";
 import Ticket from "../assets/Animal2.png";
 import Rooms from "../assets/Room1.png";
 import attractions from "../assets/Attractions1.png";
-import { ATTRACTIONS, FACILITIES } from "../Constants/Constants";
+import { ATTRACTIONS, FACILITIES, TICKETS } from "../Constants/Constants";
 
 function Homepage() {
   useEffect(() => {
@@ -43,7 +43,7 @@ function Homepage() {
               <div className="Facilities">
                 <div className="gallery">
                   <a href={FACILITIES}>
-                    <img src={Facilities} style={{ width: "100%" }} />
+                    <img src={Facilities} width="300" height="200" />
                   </a>
                   <div className="desc">Facilities At RZA</div>
                 </div>
@@ -52,7 +52,7 @@ function Homepage() {
               <div className="Attractions">
                 <div className="gallery">
                   <a href={ATTRACTIONS}>
-                    <img src={attractions} style={{ width: "100%" }} />
+                    <img src={attractions} width="300" height="200" />
                   </a>
                   <div className="desc">Attractions at RZA</div>
                 </div>
@@ -62,8 +62,8 @@ function Homepage() {
               <br></br>
               <div className="Tickets">
                 <div className="gallery">
-                  <a href="">
-                    <img src={Ticket} style={{ width: "100%" }} />
+                  <a href={TICKETS}>
+                    <img src={Ticket} width="300" height="200" />
                   </a>
                   <div className="desc">Book Tickets</div>
                 </div>
@@ -72,7 +72,7 @@ function Homepage() {
               <div className="Rooms">
                 <div className="gallery">
                   <a href="">
-                    <img src={Rooms} style={{ width: "100%" }}  />
+                    <img src={Rooms} width="300" height="200" />
                   </a>
                   <div className="desc">Book a Stay at our hotel</div>
                 </div>

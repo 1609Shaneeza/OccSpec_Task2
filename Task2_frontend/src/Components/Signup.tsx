@@ -81,7 +81,7 @@ function Signup() {
                     backdropFilter: "blur(30px)",
                   }}
                 >
-                  <MDBCardBody className="p-5 shadow-6 text-center">
+                  <MDBCardBody className=" SignIn p-5 shadow-6 text-center">
                     <h2 className="fw-bold mb-5">Register Now</h2>
 
                     <MDBRow>

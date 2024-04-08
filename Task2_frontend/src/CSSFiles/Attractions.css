@@ -40,3 +40,17 @@ body{
       max-width: 100%;
     }
   }
+
+
+.menu{
+border: 1px solid #ccc;
+  background: linear-gradient(
+    rgb(42, 207, 42),
+    rgb(16, 113, 16),
+    rgb(10, 68, 10),
+    rgb(1, 31, 1)
+  );
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  text-align: center;
+}
