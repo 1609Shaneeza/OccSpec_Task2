@@ -7,11 +7,6 @@ function TicketSummary() {
 
     const [numberOfChildren, setNumberOfChildren] = useState(0);
     const [numberOfAdults, setNumberOfAdults] = useState(0);
-
-
-    
-    
-
     
 
     return(
