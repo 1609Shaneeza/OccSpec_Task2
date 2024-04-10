@@ -9,9 +9,9 @@ import "./CSSFiles/Login.css"
 import "./CSSFiles/Navbar.css"
 import "./CSSFiles/Attractions.css"
 import "./CSSFiles/Signup.css"
-import "./CSSFiles/Dashboard.css"
+// import "./CSSFiles/Dashboard.css"
 import "./CSSFiles/Ticket.css";
-import "./CSSFiles/Checkout.css";
+// import "./CSSFiles/Checkout.css";
 
 
 

@@ -54,6 +54,7 @@ function TicketBooking() {
   return (
     <>
       <br></br>
+      <h1>Book Tickets for the RZA Zoo</h1>
       <div className="Container">
         <div className="row col col-lg-9 mx-5">
           <div className=" Tickets col col-lg-4">
@@ -67,6 +68,7 @@ function TicketBooking() {
           </div>
           <div className="col col-lg-8">
             <div className="Tickets">
+              <h3>Book Tickets</h3>
               <form onSubmit={handleSubmit}>
                 <MDBRow>
                   <MDBCol col="2">
