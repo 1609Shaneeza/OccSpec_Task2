@@ -4,7 +4,7 @@ import { FormEvent, useContext, useState } from "react";
 import { TicketBookingContext } from "./TicketBookingProvider";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { TICKETSUMMARY } from "../Constants/Constants";
+import { CHECKOUT } from "../Constants/Constants";
 
 function TicketsBookings() {
   const [Email, setEmail] = useState("");
@@ -38,6 +38,7 @@ function TicketsBookings() {
       setMessage(JSON.stringify(Response.data));
 
       if (Response.data["success"] == true) {
+        console.log("Value of EdVisit is: " + EdVisit);
         Ticket_Context?.setTicketBooking({
           Email,
           EdVisit,
@@ -45,7 +46,7 @@ function TicketsBookings() {
           NumOfAdult,
           NumOfChildren,
         });
-        navigate(TICKETSUMMARY);
+        navigate(CHECKOUT);
       } else {
         setMessage("Email doesnot exists")
       }
@@ -58,11 +59,11 @@ function TicketsBookings() {
     }
   };
 
-  console.log("EdVisit:",Ticket_Context?.TicketBooking?.EdVisit);
-  console.log("Email:", Ticket_Context?.TicketBooking?.Email);
-  console.log("Adults:", Ticket_Context?.TicketBooking?.NumOfAdult);
-  console.log("Children:", Ticket_Context?.TicketBooking?.NumOfChildren);
-  console.log("Date:", Ticket_Context?.TicketBooking?.date);
+  // console.log("EdVisit:",Ticket_Context?.TicketBooking?.EdVisit);
+  // console.log("Email:", Ticket_Context?.TicketBooking?.Email);
+  // console.log("Adults:", Ticket_Context?.TicketBooking?.NumOfAdult);
+  // console.log("Children:", Ticket_Context?.TicketBooking?.NumOfChildren);
+  // console.log("Date:", Ticket_Context?.TicketBooking?.date);
 
 
 

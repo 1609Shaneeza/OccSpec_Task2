@@ -1,4 +1,12 @@
 .Checkout{
-    background-color: black;
-    color: white;
+    border: 1px solid #ccc;
+  background: linear-gradient(
+    rgb(42, 207, 42),
+    rgb(24, 170, 24),
+    rgb(17, 110, 17),
+    rgb(1, 31, 1)
+  );
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  border-radius: 10px;
 }
