@@ -4,17 +4,24 @@ import { FormEvent, useContext, useState } from "react";
 import { TicketBookingContext } from "./TicketBookingProvider";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { HOME } from "../Constants/Constants";
+import { TICKETSUMMARY } from "../Constants/Constants";
 
-function TicketBooking() {
+function TicketsBookings() {
   const [Email, setEmail] = useState("");
   const [Message, setMessage] = useState("");
   const [EdVisit, setEdVisit] = useState("");
-  const [date, setDate] = useState(Date());
-  const [NumOfAdult, setNumOfAdult] = useState<any | null>(null);
-  const [NumOfChildren, setNumOfChildren] = useState<any | null>(null);
+  const [date, setDate] = useState("");
+  const [NumOfAdult, setNumOfAdult] = useState(0);
+  const [NumOfChildren, setNumOfChildren] = useState(0);
   const Ticket_Context = useContext(TicketBookingContext);
   const navigate = useNavigate();
+
+    // console.log("EdVisit:", EdVisit);
+    // console.log("Email:", Email);
+    // console.log("Adults:", NumOfAdult);
+    // console.log("Children:", NumOfChildren);
+    // console.log("Date:", date);
+
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -25,6 +32,10 @@ function TicketBooking() {
         "http://localhost:5000/EmailCheckTicketsBooking",
         {
           Email: Email,
+          // EdVisit: EdVisit,
+          // date: date,
+          // NumOfAdult: NumOfAdult,
+          // NumOfChildren: NumOfChildren,
         }
       );
 
@@ -38,7 +49,9 @@ function TicketBooking() {
           NumOfAdult,
           NumOfChildren,
         });
-        navigate(HOME)
+        navigate(TICKETSUMMARY);
+      } else {
+        setMessage("Email doesnot exists")
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -49,7 +62,13 @@ function TicketBooking() {
     }
   };
 
-  console.log(date);
+  // console.log("EdVisit:",Ticket_Context?.TicketBooking?.EdVisit);
+  // console.log("Email:", Ticket_Context?.TicketBooking?.Email);
+  // console.log("Adults:", Ticket_Context?.TicketBooking?.NumOfAdult);
+  // console.log("Children:", Ticket_Context?.TicketBooking?.NumOfChildren);
+  // console.log("Date:", Ticket_Context?.TicketBooking?.date);
+
+
 
   return (
     <>
@@ -110,7 +129,7 @@ function TicketBooking() {
                   <MDBCol>
                     <p>Number Of Adults</p>
                     <input
-                      onChange={(e) => setNumOfAdult(e.target.value)}
+                      onChange={(e) => setNumOfAdult(parseInt(e.target.value))}
                       id="NumberOfAdults"
                       type="Number"
                       min={1}
@@ -121,7 +140,9 @@ function TicketBooking() {
                   <MDBCol>
                     <p>Number Of Children</p>
                     <input
-                      onChange={(e) => setNumOfChildren(e.target.value)}
+                      onChange={(e) =>
+                        setNumOfChildren(parseInt(e.target.value))
+                      }
                       id="NumberOfChildren"
                       type="Number"
                       min={0}
@@ -135,6 +156,7 @@ function TicketBooking() {
                   Book Tickets
                 </button>
                 <br></br>
+                {Message}
               </form>
               <br></br>
             </div>
@@ -146,4 +168,4 @@ function TicketBooking() {
   );
 }
 
-export default TicketBooking;
+export default TicketsBookings;

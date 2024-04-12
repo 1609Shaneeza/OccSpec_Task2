@@ -11,9 +11,9 @@ import Signup from "./Components/Signup";
 import Dashboard from "./Components/StaffDashBoard";
 import CredentialProvider from "./Components/CredentialsProvider";
 import EducationMaterials1 from "./Components/EducationalMaterials1";
-import TicketBooking from "./Components/TicketBooking";
 import Checkout from "./Components/Checkout";
 import TicketSummary from "./Components/TicketSummary";
+import TicketsBookings from "./Components/TicketsBookings";
 
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
           <Route path={SIGNUP} index element={<Signup />} />
           <Route path={DASHBOARD} index element={<Dashboard />} />
           <Route path={EDUCATION} index element={<EducationMaterials1 />} />
-          <Route path={TICKETS} index element={<TicketBooking />} />
+          <Route path={TICKETS} index element={<TicketsBookings />} />
           <Route path={CHECKOUT} index element={<Checkout />} />
           <Route path={TICKETSUMMARY} index element={<TicketSummary />} />
         </Routes>
