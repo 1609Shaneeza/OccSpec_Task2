@@ -1,4 +1,4 @@
-import { DatePicker, DatePickerInput } from "@carbon/react";
+import { DatePicker } from "@carbon/react";
 import { MDBCol, MDBRow } from "mdb-react-ui-kit";
 import { FormEvent, useContext, useState } from "react";
 import { TicketBookingContext } from "./TicketBookingProvider";
@@ -32,10 +32,6 @@ function TicketsBookings() {
         "http://localhost:5000/EmailCheckTicketsBooking",
         {
           Email: Email,
-          // EdVisit: EdVisit,
-          // date: date,
-          // NumOfAdult: NumOfAdult,
-          // NumOfChildren: NumOfChildren,
         }
       );
 
@@ -62,11 +58,11 @@ function TicketsBookings() {
     }
   };
 
-  // console.log("EdVisit:",Ticket_Context?.TicketBooking?.EdVisit);
-  // console.log("Email:", Ticket_Context?.TicketBooking?.Email);
-  // console.log("Adults:", Ticket_Context?.TicketBooking?.NumOfAdult);
-  // console.log("Children:", Ticket_Context?.TicketBooking?.NumOfChildren);
-  // console.log("Date:", Ticket_Context?.TicketBooking?.date);
+  console.log("EdVisit:",Ticket_Context?.TicketBooking?.EdVisit);
+  console.log("Email:", Ticket_Context?.TicketBooking?.Email);
+  console.log("Adults:", Ticket_Context?.TicketBooking?.NumOfAdult);
+  console.log("Children:", Ticket_Context?.TicketBooking?.NumOfChildren);
+  console.log("Date:", Ticket_Context?.TicketBooking?.date);
 
 
 
