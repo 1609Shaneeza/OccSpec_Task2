@@ -1,6 +1,8 @@
-import React, { FormEvent, useEffect, useState } from "react";
+import React, { FormEvent, useContext, useEffect, useState } from "react";
 import { MDBRow, MDBCol } from "mdb-react-ui-kit";
 import InputMask from "react-input-mask";
+import { AccountCredentialsContext } from "./CredentialsProvider";
+import axios from "axios";
 
 function Checkout() {
   const [name, setName] = useState("");
@@ -8,6 +10,10 @@ function Checkout() {
   const [cardNumber, setCardNumber] = useState("");
   const [expDate, setExpDate] = useState("");
   const [cvc, setCVC] = useState("");
+  const credentialsContext = useContext(AccountCredentialsContext);
+  const Customer = credentialsContext?.accountDetails?.Email;
+
+
 
   useEffect(() => {
     document.title = "Checkout";
@@ -25,6 +31,15 @@ function Checkout() {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
+
+    // try {
+    //   const response = await axios.get("http://localhost:5000/Checkout",{
+    //     Customer : Customer,
+    //   });
+    //   setMessage(response?.data?.result);
+    // } catch (error) {
+    //   console.error("Error fetching pre-orders:", error);
+    // }
   };
 
   return (
@@ -86,10 +101,13 @@ function Checkout() {
               <button className="Login" type="submit">
                 Checkout
               </button>
+              <br></br>
+              <br></br>
             </form>
           </div>
         </div>
       </div>
+      <br/>
     </>
   );
 }

@@ -1,11 +1,6 @@
 .Checkout{
     border: 1px solid #ccc;
-  background: linear-gradient(
-    rgb(42, 207, 42),
-    rgb(24, 170, 24),
-    rgb(17, 110, 17),
-    rgb(1, 31, 1)
-  );
+    background-image: url(/workspaces/OccSpec_Task2/Task2_frontend/src/assets/checkoutImage.jpeg);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: white;
   border-radius: 10px;
