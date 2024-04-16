@@ -1,6 +1,6 @@
 .Summary {
   border: 1px solid black;
-  background-color: rgb(22, 107, 22);
+  background-image: url(/workspaces/OccSpec_Task2/Task2_frontend/src/assets/greenBackground.jpg);
   color: White;
   border-radius: 5px;
 }
