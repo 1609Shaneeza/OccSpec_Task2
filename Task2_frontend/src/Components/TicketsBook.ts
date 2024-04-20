@@ -6,14 +6,15 @@ interface TicketTypes {
   Email: string;
   EdVisit: string;
   date: string;
-  NumOfAdult: Number;
-  NumOfChildren: Number;
+  NumOfAdult: number;
+  NumOfChildren: number;
 }
 
 export interface TicketContextType {
   TicketBooking: TicketTypes | null;
   setTicketBooking: (newBookings: TicketTypes) => void;
 }
+
 
 function TicketsBook(): TicketContextType {
   const TicketsString = sessionStorage.getItem(TICKETS_BOOK);
@@ -24,6 +25,7 @@ function TicketsBook(): TicketContextType {
   const saveBookingDetail = (newBookings: TicketTypes) => {
     sessionStorage.setItem(TICKETS_BOOK, JSON.stringify(newBookings));
     setTicketBooking(newBookings);
+    console.log(newBookings);
   };
 
   return {

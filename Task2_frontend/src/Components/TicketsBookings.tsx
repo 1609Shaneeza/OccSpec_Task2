@@ -1,20 +1,27 @@
-import { DatePicker, DatePickerInput } from "@carbon/react";
+import { DatePicker } from "@carbon/react";
 import { MDBCol, MDBRow } from "mdb-react-ui-kit";
 import { FormEvent, useContext, useState } from "react";
 import { TicketBookingContext } from "./TicketBookingProvider";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { HOME } from "../Constants/Constants";
+import { CHECKOUT } from "../Constants/Constants";
 
-function TicketBooking() {
+function TicketsBookings() {
   const [Email, setEmail] = useState("");
   const [Message, setMessage] = useState("");
   const [EdVisit, setEdVisit] = useState("");
-  const [date, setDate] = useState(Date());
-  const [NumOfAdult, setNumOfAdult] = useState<any | null>(null);
-  const [NumOfChildren, setNumOfChildren] = useState<any | null>(null);
+  const [date, setDate] = useState("");
+  const [NumOfAdult, setNumOfAdult] = useState(0);
+  const [NumOfChildren, setNumOfChildren] = useState(0);
   const Ticket_Context = useContext(TicketBookingContext);
   const navigate = useNavigate();
+
+    // console.log("EdVisit:", EdVisit);
+    // console.log("Email:", Email);
+    // console.log("Adults:", NumOfAdult);
+    // console.log("Children:", NumOfChildren);
+    // console.log("Date:", date);
+
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -31,6 +38,7 @@ function TicketBooking() {
       setMessage(JSON.stringify(Response.data));
 
       if (Response.data["success"] == true) {
+        console.log("Value of EdVisit is: " + EdVisit);
         Ticket_Context?.setTicketBooking({
           Email,
           EdVisit,
@@ -38,7 +46,9 @@ function TicketBooking() {
           NumOfAdult,
           NumOfChildren,
         });
-        navigate(HOME)
+        navigate(CHECKOUT);
+      } else {
+        setMessage("Email doesnot exists")
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -49,11 +59,18 @@ function TicketBooking() {
     }
   };
 
-  console.log(date);
+  // console.log("EdVisit:",Ticket_Context?.TicketBooking?.EdVisit);
+  // console.log("Email:", Ticket_Context?.TicketBooking?.Email);
+  // console.log("Adults:", Ticket_Context?.TicketBooking?.NumOfAdult);
+  // console.log("Children:", Ticket_Context?.TicketBooking?.NumOfChildren);
+  // console.log("Date:", Ticket_Context?.TicketBooking?.date);
+
+
 
   return (
     <>
       <br></br>
+      <h1>Book Tickets for the RZA Zoo</h1>
       <div className="Container">
         <div className="row col col-lg-9 mx-5">
           <div className=" Tickets col col-lg-4">
@@ -67,6 +84,7 @@ function TicketBooking() {
           </div>
           <div className="col col-lg-8">
             <div className="Tickets">
+              <h3>Book Tickets</h3>
               <form onSubmit={handleSubmit}>
                 <MDBRow>
                   <MDBCol col="2">
@@ -108,7 +126,7 @@ function TicketBooking() {
                   <MDBCol>
                     <p>Number Of Adults</p>
                     <input
-                      onChange={(e) => setNumOfAdult(e.target.value)}
+                      onChange={(e) => setNumOfAdult(parseInt(e.target.value))}
                       id="NumberOfAdults"
                       type="Number"
                       min={1}
@@ -119,10 +137,12 @@ function TicketBooking() {
                   <MDBCol>
                     <p>Number Of Children</p>
                     <input
-                      onChange={(e) => setNumOfChildren(e.target.value)}
+                      onChange={(e) =>
+                        setNumOfChildren(parseInt(e.target.value))
+                      }
                       id="NumberOfChildren"
                       type="Number"
-                      min={1}
+                      min={0}
                       max={30}
                       required
                     />
@@ -133,6 +153,7 @@ function TicketBooking() {
                   Book Tickets
                 </button>
                 <br></br>
+                {Message}
               </form>
               <br></br>
             </div>
@@ -144,4 +165,4 @@ function TicketBooking() {
   );
 }
 
-export default TicketBooking;
+export default TicketsBookings;

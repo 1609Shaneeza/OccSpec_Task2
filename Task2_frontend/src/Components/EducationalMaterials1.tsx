@@ -41,7 +41,8 @@ function EducationMaterials1() {
                         Description={EducationalMaterial.Description}
                         Url={EducationalMaterial.Url}
                         Habitat={EducationalMaterial.Habitat} 
-                        Conservation={EducationalMaterial.Conservation}                  />
+                        Conservation={EducationalMaterial.Conservation}                  
+                        />
                 ))}
               </Row>
             </div>

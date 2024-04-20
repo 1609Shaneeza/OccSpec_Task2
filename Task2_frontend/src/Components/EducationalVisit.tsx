@@ -13,7 +13,7 @@ function EducationalMaterials({Title, Description, Habitat, Conservation, Url}:M
     
     return (
       <>
-        <Card className="menu px-1 py-1 mx-3 my-3" style={{ width: "17rem" }}>
+        <Card className="menu px-1 py-1 mx-3 my-3" style={{ width: "19rem" }}>
           <div className="image py-1">
             <Card.Img
               variant="top"

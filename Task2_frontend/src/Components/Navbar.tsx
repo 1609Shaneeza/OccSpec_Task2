@@ -8,6 +8,8 @@ import {
   HOME,
   LOGIN,
   SIGNUP,
+  TICKETS,
+  TICKETSUMMARY,
 } from "../Constants/Constants";
 import { AccountCredentialsContext } from "./CredentialsProvider";
 import { useContext, useEffect, useState } from "react";
@@ -50,14 +52,14 @@ function Navbar() {
               <Link to={EDUCATION} className="navbar-brand">
                 Educational Materials
               </Link>
-              <Link to="" className="navbar-brand">
+              <Link to={TICKETS} className="navbar-brand">
                 Book Tickets
               </Link>
               <Link to={SIGNUP} className="navbar-brand">
                 Signup
               </Link>
-              <Link to={CHECKOUT} className="navbar-brand">
-                Checkout
+              <Link to={TICKETSUMMARY} className="navbar-brand">
+                TicketSummary
               </Link>
               <nav>
                 <div className="d-flex align-items-center">

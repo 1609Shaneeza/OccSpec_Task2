@@ -1,0 +1,28 @@
+.Summary {
+  border: 1px solid black;
+  background-image: url(/workspaces/OccSpec_Task2/Task2_frontend/src/assets/greenBackground.jpg);
+  color: White;
+  border-radius: 5px;
+}
+
+.summaryText {
+  text-align: center;
+  font-size: 17px;
+}
+
+.summaryhead {
+  text-align: center;
+  font-size: 25px;
+}
+
+.summary {
+  text-align: center;
+  font-size: 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.summary:hover {
+  background-color: rgb(6, 46, 6);
+  color: rgb(255, 255, 255);
+}

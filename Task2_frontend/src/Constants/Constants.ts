@@ -9,6 +9,7 @@ const ROOMS = "/RoomBookings";
 const NOT_FOUND = "/NotFound";
 const DASHBOARD = "/StaffDashboard";
 const CHECKOUT = "/CheckoutPage";
+const TICKETSUMMARY = "/TicketSummary";
 
 export {
   HOME,
@@ -22,4 +23,5 @@ export {
   NOT_FOUND,
   DASHBOARD,
   CHECKOUT,
+  TICKETSUMMARY
 };

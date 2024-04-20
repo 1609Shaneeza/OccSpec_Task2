@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Logo from "../assets/RZA_LOGO.png";
 import { LogoFacebook, LogoInstagram, LogoX } from "@carbon/icons-react";
+import { ATTRACTIONS, EDUCATION, FACILITIES, TICKETS } from "../Constants/Constants";
 
 function AboutUs() {
   return (
@@ -54,19 +55,19 @@ function AboutUs() {
               <h2>Explore Our Services</h2>
               <br></br>
               <p>
-                <Link to="{PREORDER}" className="nav-link">
+                <Link to={EDUCATION} className="nav-link">
                   Educational Materials
                 </Link>
                 <br />
-                <Link to="{HAMPERORDER}" className="nav-link">
+                <Link to={FACILITIES} className="nav-link">
                   Facilities
                 </Link>
                 <br />
-                <Link to="{BOOKINGSPACES}" className="nav-link">
+                <Link to={ATTRACTIONS} className="nav-link">
                   Attractions
                 </Link>
                 <br />
-                <Link to="{LESSONS}" className="nav-link">
+                <Link to={TICKETS} className="nav-link">
                   Book Tickets
                 </Link>
                 <br />

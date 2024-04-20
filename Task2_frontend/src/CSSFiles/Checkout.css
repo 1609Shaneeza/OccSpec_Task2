@@ -1,4 +1,7 @@
 .Checkout{
-    background-color: black;
-    color: white;
+    border: 1px solid #ccc;
+    background-image: url(/workspaces/OccSpec_Task2/Task2_frontend/src/assets/checkoutImage.jpeg);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  border-radius: 10px;
 }
