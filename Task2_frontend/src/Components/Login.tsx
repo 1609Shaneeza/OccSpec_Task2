@@ -62,6 +62,7 @@ function Login() {
 
   return (
     <>
+    <br></br>
       <div className="Container text-center">
         <div className="login">
           <form onSubmit={handleSubmit}>
@@ -73,7 +74,7 @@ function Login() {
                   </MDBCol>
 
                   <MDBCol lg="6" md="12">
-                    <MDBCardBody className="d-flex flex-column">
+                    <MDBCardBody className="Loginn d-flex flex-column">
                       <div className="d-flex flex-row mt-2">
                         <span className="h1 fw-bold mb-auto">Riget Zoo Adventures</span>
                       </div>

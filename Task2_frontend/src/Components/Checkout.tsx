@@ -1,9 +1,12 @@
 //Imports for Checkout page
+//Imports for Checkout page
 import React, { FormEvent, useContext, useEffect, useState } from "react";
 import { MDBRow, MDBCol } from "mdb-react-ui-kit";
 import InputMask from "react-input-mask";
-import { AccountCredentialsContext } from "./CredentialsProvider";
 import axios from "axios";
+import { TicketBookingContext } from "./TicketBookingProvider";
+import { TICKETSUMMARY } from "../Constants/Constants";
+import { useNavigate } from "react-router-dom";
 // import axios from "axios";
 
 //Checkout function
@@ -13,8 +16,13 @@ function Checkout() {
   const [cardNumber, setCardNumber] = useState("");
   const [expDate, setExpDate] = useState("");
   const [cvc, setCVC] = useState("");
-  const credentialsContext = useContext(AccountCredentialsContext);
-  const Email = credentialsContext?.accountDetails?.Email;
+  const [Email, setEmail] = useState("");
+  const Tickets = useContext(TicketBookingContext);
+  const navigate = useNavigate();
+
+  const d = new Date();
+  const DateOfPayment =
+    d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear();
 
   //Document title
   useEffect(() => {
@@ -35,13 +43,24 @@ function Checkout() {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
+    if (Tickets?.TicketBooking?.Email == null) {
+      setMessage("Please Enter a Email");
+    } else {
+      setEmail(Tickets.TicketBooking.Email);
+    }
     try {
-      const Response = await axios.post(
-        "http://localhost:5000/EmailCheckTicketsBooking",
-        {
-          Email: Email,
-        }
-      );
+      const Response = await axios.post("http://localhost:5000/Checkout", {
+        name: name,
+        Email: Email,
+        cardNumber: cardNumber,
+        expDate: expDate,
+        cvc: cvc,
+        DateOfPayment: DateOfPayment,
+      });
+
+      if (Response.data["success"]) {
+        navigate(TICKETSUMMARY);
+      }
 
       setMessage(JSON.stringify(Response.data));
     } catch (error) {

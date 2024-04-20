@@ -44,12 +44,7 @@ body{
 
 .menu{
 border: 1px solid #ccc;
-  background: linear-gradient(
-    rgb(42, 207, 42),
-    rgb(16, 113, 16),
-    rgb(10, 68, 10),
-    rgb(1, 31, 1)
-  );
+background-image: url(/workspaces/OccSpec_Task2/Task2_frontend/src/assets/greenBackground.jpg);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: white;
   text-align: center;

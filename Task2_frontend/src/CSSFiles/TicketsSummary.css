@@ -2,8 +2,7 @@
   align-items: center;
   width: 500px;
   margin-left:35%;
-  background-image: url(/workspaces/OccupationalSpecialism_Task2_Mascarenhas_S/RZA_Frontend/src/assets/greenBackground.jpg);
-  background-repeat: no-repeat;
+  background-image: url(/workspaces/OccSpec_Task2/Task2_frontend/src/assets/greenBackground.jpg);
   background-size: auto;
   border-radius: 20px;
 }

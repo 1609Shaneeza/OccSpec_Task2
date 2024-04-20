@@ -9,8 +9,13 @@ function TicketSummary() {
 
   const numberOfChildren = Tickets?.TicketBooking?.NumOfChildren || 0;
   const NumberOfAdults = Tickets?.TicketBooking?.NumOfAdult || 0;
-  const Date = Tickets?.TicketBooking?.date;
+  const DateVisiting = Tickets?.TicketBooking?.date;
+  console.log(DateVisiting);
   const EdVisit = Tickets?.TicketBooking?.EdVisit;
+
+  const d = new Date();
+  const DateOfPayment =
+    d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear();
 
   //HandleSubmit for form
   const handleSubmit = async (event: FormEvent) => {
@@ -23,9 +28,10 @@ function TicketSummary() {
         {
           Email: Email,
           EdVisit: EdVisit,
-          Date: Date,
+          DateVisiting: DateVisiting,
           numberOfChildren: numberOfChildren,
           NumberOfAdults: NumberOfAdults,
+          DateOfPayment: DateOfPayment,
         }
       );
       setMessage(JSON.stringify(response.data));

@@ -28,13 +28,9 @@ input:focus {
 
 .SignIn{
     border: 1px solid black;
-  background: linear-gradient(
-    rgb(22, 184, 22),
-    rgb(17, 128, 17),
-    rgb(6, 61, 6),
-    rgb(0, 0, 0)
-  );
+background-image: url(/workspaces/OccSpec_Task2/Task2_frontend/src/assets/greenBackground.jpg);
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: white;
+  border-radius: 10px;
 }

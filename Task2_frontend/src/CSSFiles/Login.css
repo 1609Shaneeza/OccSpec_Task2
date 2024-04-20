@@ -42,3 +42,8 @@
   .Password:focus {
     border-color: green;
   }
+
+
+  .Loginn {
+    background-image: url(/workspaces/OccSpec_Task2/Task2_frontend/src/assets/greenBackground.jpg);
+  }

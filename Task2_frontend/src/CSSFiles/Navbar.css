@@ -1,18 +1,20 @@
+/* body{
+  background-image: url(/workspaces/OccSpec_Task2/Task2_frontend/src/assets/greenBackground.jpg);
+  background-size: 200%;
+  background-repeat: no-repeat;
+} */
+
 .Navbar {
-    background-color: rgb(23, 150, 23);
+  background-image: url(/workspaces/OccSpec_Task2/Task2_frontend/src/assets/greenBackground.jpg);
     font-size: 20px;
     font-style: bold;
+    font-family: Poppins;
   }
   
   .Aboutus {
-    background: linear-gradient(
-      rgb(35, 133, 35),
-      rgb(14, 121, 14),
-      rgb(8, 63, 8),
-      rgb(1, 31, 1)
-    );
+    background-image: url(/workspaces/OccSpec_Task2/Task2_frontend/src/assets/greenBackground.jpg);
     width: auto;
-    color: white;
+    /* color: white; */
     text-align: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
