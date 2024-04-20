@@ -12,7 +12,7 @@ import Dashboard from "./Components/StaffDashBoard";
 import CredentialProvider from "./Components/CredentialsProvider";
 import EducationMaterials1 from "./Components/EducationalMaterials1";
 import Checkout from "./Components/Checkout";
-import TicketSummary from "./Components/TicketSummary";
+import TicketSummary from "./Components/TicketCheckout";
 import TicketsBookings from "./Components/TicketsBookings";
 import TicketBookingProvider from "./Components/TicketBookingProvider";
 

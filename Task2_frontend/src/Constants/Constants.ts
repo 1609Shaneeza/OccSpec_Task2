@@ -10,6 +10,7 @@ const NOT_FOUND = "/NotFound";
 const DASHBOARD = "/StaffDashboard";
 const CHECKOUT = "/CheckoutPage";
 const TICKETSUMMARY = "/TicketSummary";
+const AVAILABILITY = "/CheckRoomAvailability";
 
 export {
   HOME,
@@ -23,5 +24,6 @@ export {
   NOT_FOUND,
   DASHBOARD,
   CHECKOUT,
-  TICKETSUMMARY
+  TICKETSUMMARY,
+  AVAILABILITY,
 };

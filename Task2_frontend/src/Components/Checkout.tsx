@@ -1,9 +1,12 @@
+//Imports for Checkout page
 import React, { FormEvent, useContext, useEffect, useState } from "react";
 import { MDBRow, MDBCol } from "mdb-react-ui-kit";
 import InputMask from "react-input-mask";
 import { AccountCredentialsContext } from "./CredentialsProvider";
 import axios from "axios";
+// import axios from "axios";
 
+//Checkout function
 function Checkout() {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
@@ -11,14 +14,14 @@ function Checkout() {
   const [expDate, setExpDate] = useState("");
   const [cvc, setCVC] = useState("");
   const credentialsContext = useContext(AccountCredentialsContext);
-  const Customer = credentialsContext?.accountDetails?.Email;
+  const Email = credentialsContext?.accountDetails?.Email;
 
-
-
+  //Document title
   useEffect(() => {
     document.title = "Checkout";
   });
 
+  //Validation for CVC
   const handleCVCChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     // Allow only numeric characters
@@ -28,31 +31,42 @@ function Checkout() {
     }
   };
 
-
+  //HandleSubmit for form
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
-    // try {
-    //   const response = await axios.get("http://localhost:5000/Checkout",{
-    //     Customer : Customer,
-    //   });
-    //   setMessage(response?.data?.result);
-    // } catch (error) {
-    //   console.error("Error fetching pre-orders:", error);
-    // }
+    try {
+      const Response = await axios.post(
+        "http://localhost:5000/EmailCheckTicketsBooking",
+        {
+          Email: Email,
+        }
+      );
+
+      setMessage(JSON.stringify(Response.data));
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        setMessage(error.message);
+      } else {
+        setMessage(String(error));
+      }
+    }
   };
 
   return (
     <>
-      <h1>Payment Details</h1>
-      <div className="container text-center mx-9 py-6">
-        <div className="row">
-          <div className="Checkout col col-lg-6">
-            <br />
+      {/* Form for Checkout
+    Inputs needed Name on card, Card Number, CVC, expiry date
+    data Types for all inputs "String" */}
+      <h1>Please Pay Here</h1>
+      <br />
+      <div className="TicketSummary">
+        <div className="container">
+          <div className="col">
             <form onSubmit={handleSubmit}>
               <br />
               <MDBRow>
-                <MDBCol col="6">
+                <MDBCol col="5">
                   <p>Name On Card</p>
                   <input
                     onChange={(e) => setName(e.target.value)}
@@ -103,11 +117,12 @@ function Checkout() {
               </button>
               <br></br>
               <br></br>
+              {message}
             </form>
           </div>
         </div>
       </div>
-      <br/>
+      <br></br>
     </>
   );
 }
