@@ -31,7 +31,6 @@ function CheckAvailability() {
       <br />
       {/* //form for Check availability */}
       <div className="Container text-center">
-        <div className="Availability">
           <form onSubmit={handleSubmit}>
             <MDBContainer className="my-auto">
               <MDBCard>
@@ -46,7 +45,7 @@ function CheckAvailability() {
                   </MDBCol>
 
                   <MDBCol lg="6" md="12">
-                    <MDBCardBody className="d-flex flex-column text-center">
+                    <MDBCardBody className=" Availability d-flex flex-column text-center">
                       <div className="d-flex flex-row mt-1 text-center">
                         {/* Title/heading for form */}
                         <span className="h1 fw-bold mb-auto text-center">
@@ -85,7 +84,7 @@ function CheckAvailability() {
                             id="NumberOfGuests"
                             type="Number"
                             min={0}
-                            max={30}
+                            max={20}
                             required
                           />
                         </MDBCol>
@@ -99,7 +98,7 @@ function CheckAvailability() {
                             id="NumberOfRooms"
                             type="Number"
                             min={0}
-                            max={30}
+                            max={10}
                             required
                           />
                         </MDBCol>
@@ -142,7 +141,6 @@ function CheckAvailability() {
             </MDBContainer>
           </form>
         </div>
-      </div>
       <br />
       <br />
     </>

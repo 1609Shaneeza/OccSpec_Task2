@@ -46,4 +46,6 @@
 
   .Loginn {
     background-image: url(/workspaces/OccSpec_Task2/Task2_frontend/src/assets/greenBackground.jpg);
+    width: auto;
+    border-radius: 10px;
   }

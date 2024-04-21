@@ -1,6 +1,8 @@
 import { FormEvent, useContext, useState } from "react";
 import { TicketBookingContext } from "./TicketBookingProvider";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { HOME } from "../Constants/Constants";
 
 function TicketSummary() {
   const [message, setMessage] = useState("");
@@ -12,6 +14,7 @@ function TicketSummary() {
   const DateVisiting = Tickets?.TicketBooking?.date;
   console.log(DateVisiting);
   const EdVisit = Tickets?.TicketBooking?.EdVisit;
+  const navigate = useNavigate();
 
   const d = new Date();
   const DateOfPayment =
@@ -34,6 +37,12 @@ function TicketSummary() {
           DateOfPayment: DateOfPayment,
         }
       );
+
+      if (response.data["success"] == true) {
+        navigate(HOME);
+      }
+
+
       setMessage(JSON.stringify(response.data));
     } catch (error) {
       if (axios.isAxiosError(error)) {

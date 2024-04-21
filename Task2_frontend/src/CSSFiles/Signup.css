@@ -3,6 +3,7 @@ input {
   border-radius: 5px;
   width: 100%;
   transition: border-color 0.3s;
+  color:black;
 }
 
 input:hover {
@@ -31,6 +32,6 @@ input:focus {
 background-image: url(/workspaces/OccSpec_Task2/Task2_frontend/src/assets/greenBackground.jpg);
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: white;
+  color: rgb(5, 4, 4);
   border-radius: 10px;
 }

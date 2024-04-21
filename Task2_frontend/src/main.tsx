@@ -13,6 +13,7 @@ import "./CSSFiles/Dashboard.css"
 import "./CSSFiles/Ticket.css";
 import "./CSSFiles/Checkout.css";
 import "./CSSFiles/TicketsSummary.css"
+import "./CSSFiles/Availability.css";
 
 
 

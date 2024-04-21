@@ -37,7 +37,7 @@ function Login() {
       });
 
       if (Response.data["success"] && Response.data["Account"] == true) {
-        credentials_Context?.setAccountDetails({Email, Password});
+        credentials_Context?.setAccountDetails({ Email, Password });
         navigate(HOME);
       } else if (
         Response.data["success"] &&
@@ -62,21 +62,27 @@ function Login() {
 
   return (
     <>
-    <br></br>
+      <br></br>
       <div className="Container text-center">
         <div className="login">
           <form onSubmit={handleSubmit}>
             <MDBContainer className="my-auto">
               <MDBCard>
                 <MDBRow className="g-0">
-                  <MDBCol lg="6" md="12">
-                    <MDBCardImage src={Logo} className="rounded-start w-90" style={{ width: "100%" }}/>
+                  <MDBCol lg="5" md="10">
+                    <MDBCardImage
+                      src={Logo}
+                      className="rounded-start w-80"
+                      style={{ width: "100%" }}
+                    />
                   </MDBCol>
 
                   <MDBCol lg="6" md="12">
-                    <MDBCardBody className="Loginn d-flex flex-column">
+                    <MDBCardBody className=" Loginn d-flex flex-column">
                       <div className="d-flex flex-row mt-2">
-                        <span className="h1 fw-bold mb-auto">Riget Zoo Adventures</span>
+                        <span className="h1 fw-bold mb-auto">
+                          Riget Zoo Adventures
+                        </span>
                       </div>
 
                       <h5
@@ -87,7 +93,7 @@ function Login() {
                       </h5>
                       <p>Email</p>
                       <input
-                      className="Email"
+                        className="Email"
                         onChange={(e) => setEmail(e.target.value)}
                         id="Username"
                         type="email"
@@ -96,7 +102,7 @@ function Login() {
                       <br></br>
                       <p>Password</p>
                       <input
-                      className="Password"
+                        className="Password"
                         onChange={(e) => setPassword(e.target.value)}
                         id="Password"
                         type={showPass ? "text" : "password"}
