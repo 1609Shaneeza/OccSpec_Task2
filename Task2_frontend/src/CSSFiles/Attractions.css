@@ -43,9 +43,9 @@ body{
 
 
 .menu{
-border: 1px solid #ccc;
+border: 1px solid #030303;
 background-image: url(/workspaces/OccSpec_Task2/Task2_frontend/src/assets/greenBackground.jpg);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: white;
   text-align: center;
+  font-family: Poppins;
 }

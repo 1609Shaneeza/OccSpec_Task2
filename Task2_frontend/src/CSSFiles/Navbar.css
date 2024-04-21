@@ -6,20 +6,20 @@
 
 .Navbar {
   background-image: url(/workspaces/OccSpec_Task2/Task2_frontend/src/assets/greenBackground.jpg);
-    font-size: 20px;
-    font-style: bold;
-    font-family: Poppins;
-  }
-  
-  .Aboutus {
-    background-image: url(/workspaces/OccSpec_Task2/Task2_frontend/src/assets/greenBackground.jpg);
-    width: auto;
-    /* color: white; */
-    text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-  }
-  
-  a {
-    color: white;
-  }
+  font-size: 20px;
+  font-style: bold;
+  font-family: Poppins;
+}
 
+.Aboutus {
+  background-image: url(/workspaces/OccSpec_Task2/Task2_frontend/src/assets/greenBackground.jpg);
+  width: auto;
+  /* color: white; */
+  text-align: center;
+  font-family: Poppins;
+  font-size: 18px;
+}
+
+a {
+  color: white;
+}

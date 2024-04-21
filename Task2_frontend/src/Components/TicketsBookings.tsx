@@ -149,13 +149,13 @@ function TicketsBookings() {
                   </MDBCol>
                 </MDBRow>
                 <br></br>
+                <br></br>
                 <button className="Signup" type="submit">
                   Book Tickets
                 </button>
                 <br></br>
                 {Message}
               </form>
-              <br></br>
             </div>
           </div>
         </div>
