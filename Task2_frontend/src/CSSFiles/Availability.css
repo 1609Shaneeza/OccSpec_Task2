@@ -2,3 +2,7 @@
     /* background-image: url(/workspaces/OccSpec_Task2/Task2_frontend/src/assets/greenBackground.jpg); */
     border-radius: 10px;
 }
+
+.custom-date-picker{
+    color: black;
+}

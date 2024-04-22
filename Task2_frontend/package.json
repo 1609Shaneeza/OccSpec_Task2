@@ -12,18 +12,21 @@
   "dependencies": {
     "@carbon/icons-react": "^11.39.0",
     "@carbon/react": "^1.54.0",
+    "@mui/x-data-grid": "^7.3.0",
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
     "mdb-react-ui-kit": "^7.2.0",
     "mdb-ui-kit": "^7.2.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
+    "react-datepicker": "^6.9.0",
     "react-dom": "^18.2.0",
     "react-input-mask": "^2.0.4",
     "react-router-dom": "^6.22.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
+    "@types/react-datepicker": "^6.2.0",
     "@types/react-dom": "^18.2.22",
     "@types/react-input-mask": "^3.0.5",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
