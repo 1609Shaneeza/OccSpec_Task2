@@ -13,6 +13,7 @@ function TicketsBookings() {
   const [date, setDate] = useState("");
   const [NumOfAdult, setNumOfAdult] = useState(0);
   const [NumOfChildren, setNumOfChildren] = useState(0);
+  const Type = "TicketBooking";
   const Ticket_Context = useContext(TicketBookingContext);
   const navigate = useNavigate();
 
@@ -40,6 +41,7 @@ function TicketsBookings() {
       if (Response.data["success"] == true) {
         console.log("Value of EdVisit is: " + EdVisit);
         Ticket_Context?.setTicketBooking({
+          Type,
           Email,
           EdVisit,
           date,

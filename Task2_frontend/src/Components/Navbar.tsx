@@ -13,6 +13,7 @@ import {
 } from "../Constants/Constants";
 import { AccountCredentialsContext } from "./CredentialsProvider";
 import { useContext, useEffect, useState } from "react";
+import { UserAvatarFilledAlt } from "@carbon/icons-react";
 
 function Navbar() {
   const credentialsContext = useContext(AccountCredentialsContext);
@@ -37,15 +38,15 @@ function Navbar() {
 
   return (
     <>
-      <BootstrapNavbar expand="lg" className="Navbar">
+      <BootstrapNavbar expand="lg" bg="light" className="Navbar">
         <div className="container">
           <Link to={HOME} className="navbar-brand">
             <img src={Logo} alt="RZA Logo" width="100px" />
           </Link>
+
           <BootstrapNavbar.Toggle aria-controls="navbarText" />
           <BootstrapNavbar.Collapse id="navbarText">
             <Nav className="me-auto">
-              <br></br>
               <Link to={HOME} className="navbar-brand">
                 HOME
               </Link>
@@ -55,30 +56,40 @@ function Navbar() {
               <Link to={TICKETS} className="navbar-brand">
                 Book Tickets
               </Link>
-              <Link to={SIGNUP} className="navbar-brand">
-                Signup
-              </Link>
               <Link to={TICKETSUMMARY} className="navbar-brand">
                 TicketSummary
               </Link>
-              <nav>
-                <div className="d-flex align-items-center">
-                  {isLoggedIn ? (
-                    // If user is logged in, show logout option
-                    <button
-                      className="btn btn-link nav-link"
-                      onClick={handleLogout}
-                    >
-                      Logout
-                    </button>
-                  ) : (
-                    // If user is not logged in, show login option
-                    <Link to={LOGIN} className="btn btn-link nav-link">
-                      Login
-                    </Link>
-                  )}
-                </div>
-              </nav>
+            </Nav>
+            <Nav>
+              <Link to={SIGNUP} className="navbar-brand">
+                Signup
+              </Link>
+            </Nav>
+            {/* <Nav>
+            <Link to={ADDINGSTAFF} className="nav-link">
+              Add new Staff
+            </Link>
+          </Nav> */}
+            <Nav>
+              <div className="d-flex align-items-center">
+                {isLoggedIn ? (
+                  // If user is logged in, show logout option
+                  <button
+                    className="btn btn-link nav-link"
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </button>
+                ) : (
+                  // If user is not logged in, show login option
+                  <Link to={LOGIN} className="btn btn-link nav-link">
+                    Login
+                  </Link>
+                )}
+                <Link to="" className="user">
+                  <UserAvatarFilledAlt size="32" color="black"/>
+                </Link>
+              </div>
             </Nav>
           </BootstrapNavbar.Collapse>
         </div>

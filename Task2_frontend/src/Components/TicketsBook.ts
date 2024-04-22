@@ -3,6 +3,7 @@ import { useState } from "react";
 const TICKETS_BOOK = "Ticket-Bookings";
 
 interface TicketTypes {
+  Type: string;
   Email: string;
   EdVisit: string;
   date: string;
