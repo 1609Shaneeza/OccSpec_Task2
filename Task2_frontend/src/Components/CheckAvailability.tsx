@@ -7,33 +7,72 @@ import {
   MDBCardImage,
   MDBCardBody,
 } from "mdb-react-ui-kit";
-import { FormEvent, useState } from "react"
+import { FormEvent, useContext, useState } from "react"
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';;
 import Room from "../assets/Room1.png";
+import axios from "axios";
+import { CheckAvailabilityContext } from "./AvailabilityProvider";
+import React from "react";
 
 //check availability function
 function CheckAvailability() {
-  const [email, setEmail] = useState("");
+  const [Email, setEmail] = useState("");
   const [MessageText, setMessage] = useState("");
-  const [numberOfGuests, setNumOfGuests] = useState(0);
-  const [numberOfRooms, setNumOfRooms] = useState(0);
-  const [dateFrom, setDateFrom] = useState(Date());
-  const [dateTo, setDateTo] = useState(Date());
-  const [startDate, setStartDate] = useState<Date | null>(null);
-  const [endDate, setEndDate] = useState<Date | null>(null);
+  const [NumOfGuests, setNumOfGuests] = useState(0);
+  const [NumOfRooms, setNumOfRooms] = useState(0);
+  const [StartDate, setStartDate] = useState<Date | null>(null);
+  const [EndDate, setEndDate] = useState<Date | null>(null);
+  const Availability_Context = useContext(CheckAvailabilityContext);
+  const Type = "RoomBooking";
 
   //handleSubmit for form
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setMessage("");
+
+    try {
+      const Response = await axios.post(
+        "http://localhost:5000/CheckAvailabilityEmailCheck",
+        {
+          Email: Email,
+        }
+      );
+
+      setMessage(JSON.stringify(Response.data));
+      console.log(Email);
+      console.log(NumOfGuests);
+      console.log(Email);
+
+      if (Response.data["success"] == true) {
+        Availability_Context?.setCheckRooms({
+          Type,
+          Email,
+          NumOfGuests,
+          NumOfRooms,
+          StartDate,
+          EndDate,
+        })
+        // navigate(CHECKOUT);
+      } else {
+        setMessage("Email doesnot exists");
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        setMessage(error.message);
+      } else {
+        setMessage(String(error));
+      }
+    }
+
+
   };
 
-  const handleDateChange = (dates: [Date | null, Date | null]) => {
-    const [startDate, endDate] = dates;
-    setStartDate(startDate);
-    setEndDate(endDate);
-  };
+  // const handleDateChange = (dates: [Date | null, Date | null]) => {
+  //   const [startDate, endDate] = dates;
+  //   setStartDate(startDate);
+  //   setEndDate(endDate);
+  // };
 
   return (
     <>
@@ -117,10 +156,10 @@ function CheckAvailability() {
                     <MDBRow>
                       <MDBCol>
                         <DatePicker
-                          selected={startDate}
+                          selected={StartDate}
                           onChange={(date) => setStartDate(date)}
-                          startDate={startDate}
-                          endDate={endDate}
+                          startDate={StartDate}
+                          endDate={EndDate}
                           selectsStart
                           placeholderText="Start Date"
                           className="custom-date-picker"
@@ -129,10 +168,10 @@ function CheckAvailability() {
                       <MDBCol>
                         {/* End Date Picker */}
                         <DatePicker
-                          selected={endDate}
+                          selected={EndDate}
                           onChange={(date) => setEndDate(date)}
-                          startDate={startDate}
-                          endDate={endDate}
+                          startDate={StartDate}
+                          endDate={EndDate}
                           selectsEnd
                           placeholderText="End Date"
                           className="custom-date-picker"
