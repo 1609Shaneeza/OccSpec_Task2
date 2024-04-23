@@ -13,7 +13,6 @@ import 'react-datepicker/dist/react-datepicker.css';;
 import Room from "../assets/Room1.png";
 import axios from "axios";
 import { CheckAvailabilityContext } from "./AvailabilityProvider";
-import React from "react";
 
 //check availability function
 function CheckAvailability() {
@@ -42,7 +41,10 @@ function CheckAvailability() {
       setMessage(JSON.stringify(Response.data));
       console.log(Email);
       console.log(NumOfGuests);
-      console.log(Email);
+      console.log(NumOfRooms);
+      console.log(StartDate);
+      console.log(EndDate);
+
 
       if (Response.data["success"] == true) {
         Availability_Context?.setCheckRooms({
@@ -162,9 +164,11 @@ function CheckAvailability() {
                           endDate={EndDate}
                           selectsStart
                           placeholderText="Start Date"
-                          className="custom-date-picker"
+                          className="custom-date-picker mx-1 py-1"
                         />
                       </MDBCol>
+                      <br></br>
+
                       <MDBCol>
                         {/* End Date Picker */}
                         <DatePicker
@@ -174,7 +178,7 @@ function CheckAvailability() {
                           endDate={EndDate}
                           selectsEnd
                           placeholderText="End Date"
-                          className="custom-date-picker"
+                          className="custom-date-picker mx-1 py-1"
                         />
                       </MDBCol>
                     </MDBRow>
@@ -192,6 +196,7 @@ function CheckAvailability() {
               </MDBRow>
             </MDBCard>
           </MDBContainer>
+          {MessageText}
         </form>
       </div>
       <br />

@@ -8,3 +8,8 @@ body{
   /* border-radius: 10px; */
 }
 
+
+.DatePicker{
+  background-color: white;
+  height: 53px;
+}

@@ -11,6 +11,7 @@ const DASHBOARD = "/StaffDashboard";
 const CHECKOUT = "/CheckoutPage";
 const TICKETSUMMARY = "/TicketSummary";
 const AVAILABILITY = "/CheckRoomAvailability";
+const ROOMDISPLAY = "/RoomAvailableDisplay";
 
 export {
   HOME,
@@ -26,4 +27,5 @@ export {
   CHECKOUT,
   TICKETSUMMARY,
   AVAILABILITY,
+  ROOMDISPLAY,
 };

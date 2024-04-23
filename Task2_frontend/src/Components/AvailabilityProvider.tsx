@@ -1,5 +1,5 @@
 import { ReactNode, createContext } from "react";
-import AvailabilityCheck, { CheckContextType } from "./CheckAvailability";
+import AvailabilityCheck, { CheckContextType } from "./CheckRoomAvailability";
 
 
 
