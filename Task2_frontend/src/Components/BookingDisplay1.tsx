@@ -25,35 +25,36 @@ function RoomsDisplay1() {
           const response = await axios.post(
             "http://localhost:5000/RoomDataDisplay",
             {
-                StartDate: StartDate,
-                EndDate: EndDate,
+              StartDate: StartDate,
+              EndDate: EndDate,
             }
           );
-          setRooms(response?.data?.result);
+          setRooms(response?.data?.DisplayData || []);
         } catch (error) {
           console.error("Error fetching pre-orders:", error);
         }
       };
+      console.log(Rooms);
 
       getRoomData();
-    }, []);
+    }, [StartDate, EndDate]);
 
 
     return (
       <>
-        <h1 className="text-center">Educational Materials </h1>
+        <h1 className="text-center"> Available Rooms</h1>
         <div className="container text-center">
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-1">
             <div className="col">
-              <Row fluid>
-                {Rooms.map((EducationalMaterial: RoomBookingCards) => (
+              <Row fluid = {true}>
+                {Rooms.map((RoomData:RoomBookingCards) => (
                   <BookingDisplay
-                    key={EducationalMaterial.RoomType}
-                    RoomType={EducationalMaterial.RoomType}
-                    Price={EducationalMaterial.Price}
-                    Availability={EducationalMaterial.Availability}
-                    capacity={EducationalMaterial.capacity}
-                    URL={EducationalMaterial.URL}
+                    key={RoomData.RoomType}
+                    RoomType={RoomData.RoomType}
+                    Price={RoomData.Price}
+                    Availability={RoomData.Availability}
+                    capacity={RoomData.capacity}
+                    URL={RoomData.URL}
                   />
                 ))}
               </Row>

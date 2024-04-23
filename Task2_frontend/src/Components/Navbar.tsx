@@ -7,6 +7,7 @@ import {
   EDUCATION,
   HOME,
   LOGIN,
+  ROOMDISPLAY,
   SIGNUP,
   TICKETS,
   TICKETSUMMARY,
@@ -56,7 +57,7 @@ function Navbar() {
               <Link to={TICKETS} className="navbar-brand">
                 Book Tickets
               </Link>
-              <Link to={TICKETSUMMARY} className="navbar-brand">
+              <Link to={ROOMDISPLAY} className="navbar-brand">
                 TicketSummary
               </Link>
             </Nav>

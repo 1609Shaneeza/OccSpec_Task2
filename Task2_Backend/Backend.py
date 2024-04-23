@@ -186,6 +186,7 @@ def EmailCheckTickets():
         except Error as e:
             print(e)
 
+################################################################################################
 
 @app.route('/TicketBookings', methods=['POST'])
 def Ticket_Booking():
@@ -253,11 +254,7 @@ def Ticket_Booking():
             print(e)
             return jsonify({'success': False, 'message': 'Internal Server Error'}), 500
 
-
-
-
-
-
+#######################################################################################################
 
 @app.route('/Checkout', methods=['POST'])
 def Payment_Details():
@@ -363,7 +360,7 @@ def Availability_EmailCheck():
 # This part of the code is for the checkavailability it checks for rooms that are available
 
 @app.route('/RoomDataDisplay', methods=['POST'])
-def Availability_EmailCheck():
+def DataDisplay():
     with sqlite3.connect("C:\\Users\\shane\\OneDrive\\Documents\\OccupationalSpecialism_Task2\\Task2_backend\\RZADatabase.db") as conn:
         print("Request Recieved")
         StartDate = request.json.get('StartDate')
@@ -376,15 +373,54 @@ def Availability_EmailCheck():
             cu.execute(query)
             result = cu.fetchall()
             print(result)
-            return jsonify({'message': 'Data Recieved'})
-            # startDate = result[0][4]
-            # endDate = result[0][5]
-            # for i in result:
-            #     if startDate >= StartDate or endDate <= EndDate:
-            #         print("No rooms Available")
-            #         return jsonify({'success': False, 'message': 'Internal Server Error'}), 500
-            #     else:
-
+            RoomsList = []
+            startDate = result[0][4]
+            print(StartDate)
+            endDate = result[0][5]
+            for i in result:
+                if startDate >= StartDate or endDate <= EndDate:
+                    print("No rooms Available")
+                    return jsonify({'message': 'Rooms Not Available'})
+                else:
+                    roomType = result[0][1]
+                    print(roomType)
+                    query = """Select * From RoomTypes Where RoomID = ?"""
+                    cu.execute(query,(roomType,))
+                    result = cu.fetchall()
+                    for i in result:
+                        RoomType = i[1]
+                        Price = i[2]
+                        Availability = i[3]
+                        Capacity = i[4]
+                        URL = i[5]
+                        json = {
+                            RoomType:RoomType,
+                            Price: Price,
+                            Availability: Availability,
+                            Capacity: Capacity,
+                            URL: URL,
+                        }
+                        RoomsList.append(json)
+                    return jsonify ({"DisplayData": RoomsList})
+            else:
+                query = """Select * From RoomTypes Where RoomID = ?"""
+                cu.execute(query,(roomType,))
+                result = cu.fetchall()
+                for i in result:
+                    RoomType = i[1]
+                    Price = i[2]
+                    Availability = i[3]
+                    Capacity = i[4]
+                    URL = i[5]
+                    json = {
+                        RoomType:RoomType,
+                        Price: Price,
+                        Availability: Availability,
+                        Capacity: Capacity,
+                        URL: URL,
+                    }
+                    RoomsList.append(json)
+                return jsonify ({"DisplayData": RoomsList})
         except Error as e:
             print(e)
             return jsonify({'success': False, 'message': 'Internal Server Error'}), 500

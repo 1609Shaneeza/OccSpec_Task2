@@ -13,6 +13,8 @@ import 'react-datepicker/dist/react-datepicker.css';;
 import Room from "../assets/Room1.png";
 import axios from "axios";
 import { CheckAvailabilityContext } from "./AvailabilityProvider";
+import { useNavigate } from "react-router-dom";
+import { ROOMDISPLAY } from "../Constants/Constants";
 
 //check availability function
 function CheckAvailability() {
@@ -24,7 +26,7 @@ function CheckAvailability() {
   const [EndDate, setEndDate] = useState<Date | null>(null);
   const Availability_Context = useContext(CheckAvailabilityContext);
   const Type = "RoomBooking";
-
+  const Navigate = useNavigate();
   //handleSubmit for form
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -55,7 +57,7 @@ function CheckAvailability() {
           StartDate,
           EndDate,
         })
-        // navigate(CHECKOUT);
+        Navigate(ROOMDISPLAY);
       } else {
         setMessage("Email doesnot exists");
       }
