@@ -12,6 +12,7 @@ body {
 div.gallery {
   border: 1px solid #ccc;
 background-image: url(/workspaces/OccSpec_Task2/Task2_frontend/src/assets/greenBackground.jpg);
+background-size: auto;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: center;
   height: auto; /* Set a fixed height for all gallery divs */

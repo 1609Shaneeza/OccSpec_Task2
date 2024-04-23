@@ -4,6 +4,7 @@ import Ticket from "../assets/Animal2.png";
 import Rooms from "../assets/Room1.png";
 import attractions from "../assets/Attractions1.png";
 import { ATTRACTIONS, AVAILABILITY, FACILITIES, TICKETS } from "../Constants/Constants";
+import Corousel from "./Corousel";
 
 function Homepage() {
   useEffect(() => {
@@ -12,9 +13,9 @@ function Homepage() {
 
   return (
     <>
+      <Corousel />
       <br></br>
-      <h1>Riget Zoo Adventures</h1>
-      <br></br>
+      <hr className="hr hr-blurry" />
       <br></br>
 
       <div className="container text-center col col-lg-auto">
@@ -81,6 +82,7 @@ function Homepage() {
           </div>
         </div>
       </div>
+      <hr className="hr hr-blurry" />
       <br></br>
       <br></br>
     </>
