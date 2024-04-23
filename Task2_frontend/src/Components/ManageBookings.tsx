@@ -20,6 +20,8 @@ function ManageBookings({RoomType, StartDate, EndDate, NumberOfRooms, TotalCost,
             <MDBCardText>
               <p>Dates: {StartDate} - {EndDate}</p>
               <p>NumberOfRooms: {NumberOfRooms}</p>
+              <p>Total: £{TotalCost}</p>
+              <p>Payment Date: {PaymentDate}</p>
             </MDBCardText>
           </MDBCardBody>
         </MDBCard>

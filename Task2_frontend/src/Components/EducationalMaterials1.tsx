@@ -8,7 +8,7 @@ function EducationMaterials1() {
     const [materials, setMaterials] = useState([]);
 
     useEffect(() => {
-      document.title = "PreOrders";
+      document.title = "EducationalMaterials";
     }, []);
 
     useEffect(() => {
