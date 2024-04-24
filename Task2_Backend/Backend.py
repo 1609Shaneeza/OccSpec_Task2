@@ -326,7 +326,6 @@ def Payment_Details():
         except Error as e:
             print(e)
             return jsonify({'success': False, 'message': 'Internal Server Error'}), 500
-        
 
 ########################################################################################################
 
