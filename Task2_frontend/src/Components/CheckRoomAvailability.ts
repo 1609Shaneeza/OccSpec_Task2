@@ -3,12 +3,11 @@ import { useState } from "react";
 const CHECK_AVAILABILITY = "Check-Availability";
 
 interface AvailabilityTypes {
-  Type: string;
   Email: string;
   NumOfGuests: number;
   NumOfRooms: number;
-  StartDate:Date | null;
-  EndDate:Date | null;
+  StartDate:string | null;
+  EndDate:string | null;
 }
 
 export interface CheckContextType {

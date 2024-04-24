@@ -12,6 +12,7 @@ const CHECKOUT = "/CheckoutPage";
 const TICKETSUMMARY = "/TicketSummary";
 const AVAILABILITY = "/CheckRoomAvailability";
 const ROOMDISPLAY = "/RoomAvailableDisplay";
+const ROOMBOOKINGSUMMARY = "/RoomBookingSummary";
 
 export {
   HOME,
@@ -28,4 +29,5 @@ export {
   TICKETSUMMARY,
   AVAILABILITY,
   ROOMDISPLAY,
+  ROOMBOOKINGSUMMARY,
 };

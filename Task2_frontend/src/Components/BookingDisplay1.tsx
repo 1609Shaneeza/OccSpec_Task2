@@ -14,6 +14,8 @@ function RoomsDisplay1() {
     const StartDate = Check_Availability?.CheckRooms?.StartDate;
     const EndDate = Check_Availability?.CheckRooms?.EndDate;
 
+    console.log(StartDate, EndDate)
+
     useEffect(() => {
       document.title = "RoomsDisplay";
     }, []);
@@ -31,7 +33,7 @@ function RoomsDisplay1() {
           );
           setRooms(response?.data?.DisplayData || []);
         } catch (error) {
-          console.error("Error fetching pre-orders:", error);
+          console.error("Error fetching RoomDisplayData:", error);
         }
       };
       console.log(Rooms);

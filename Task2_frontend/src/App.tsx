@@ -12,6 +12,7 @@ import {
   HOME,
   LOGIN,
   NOT_FOUND,
+  ROOMBOOKINGSUMMARY,
   ROOMDISPLAY,
   SIGNUP,
   TICKETS,
@@ -34,6 +35,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import CheckAvailability from "./Components/CheckAvailability";
 import RoomsDisplay1 from "./Components/BookingDisplay1";
 import AvailabilityProvider from "./Components/AvailabilityProvider";
+import RoomBookingSummary from "./Components/RoomBookingSummary";
 
 function App() {
   return (
@@ -65,6 +67,11 @@ function App() {
                   path={AVAILABILITY}
                   index
                   element={<CheckAvailability />}
+                />
+                <Route
+                  path={ROOMBOOKINGSUMMARY}
+                  index
+                  element={<RoomBookingSummary />}
                 />
               </Routes>
               <AboutUs />
