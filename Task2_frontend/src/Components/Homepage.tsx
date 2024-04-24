@@ -4,7 +4,6 @@ import Ticket from "../assets/Animal2.png";
 import Rooms from "../assets/Room1.png";
 import attractions from "../assets/Attractions1.png";
 import { ATTRACTIONS, AVAILABILITY, FACILITIES, TICKETS } from "../Constants/Constants";
-import Corousel from "./Corousel";
 
 function Homepage() {
   useEffect(() => {
@@ -13,7 +12,6 @@ function Homepage() {
 
   return (
     <>
-      <Corousel />
       <br></br>
       <hr className="hr hr-blurry" />
       <br></br>
