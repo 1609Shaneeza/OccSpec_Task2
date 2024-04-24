@@ -8,11 +8,14 @@ import { CheckAvailabilityContext } from "./AvailabilityProvider";
 
 function RoomsDisplay1() {
     const [Rooms, setRooms] = useState([]);
+    const [BookedRooms, setBookedRooms] = useState([]);
+    const [Message, SetMessage] = useState("")
 
     const Check_Availability = useContext(CheckAvailabilityContext);
 
     const StartDate = Check_Availability?.CheckRooms?.StartDate;
     const EndDate = Check_Availability?.CheckRooms?.EndDate;
+
 
     console.log(StartDate, EndDate)
 
@@ -56,8 +59,7 @@ function RoomsDisplay1() {
                     Price={RoomData.Price}
                     Availability={RoomData.Availability}
                     capacity={RoomData.capacity}
-                    URL={RoomData.URL}
-                  />
+                    URL={RoomData.URL}/>
                 ))}
               </Row>
             </div>
