@@ -22,13 +22,11 @@ function CheckAvailability() {
   const [MessageText, setMessage] = useState("");
   const [NumOfGuests, setNumOfGuests] = useState(0);
   const [NumOfRooms, setNumOfRooms] = useState(0);
-  const [startDate, setStartDate] = useState<Date | null>(null);
-  const [endDate, setEndDate] = useState<Date | null>(null);
+  const [StartDate, setStartDate] = useState<Date | null>(null);
+  const [EndDate, setEndDate] = useState<Date | null>(null);
   const Availability_Context = useContext(CheckAvailabilityContext);
   const Navigate = useNavigate();
 
-  const d = new Date()
-  const StartDate = 
   //handleSubmit for form
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -38,8 +36,8 @@ function CheckAvailability() {
     console.log(Email);
     console.log(NumOfGuests);
     console.log(NumOfRooms);
-    console.log(startDate);
-    console.log(endDate);
+    console.log(StartDate);
+    console.log(EndDate);
 
     try {
       const Response = await axios.post(
@@ -53,8 +51,8 @@ function CheckAvailability() {
       console.log(Email);
       console.log(NumOfGuests);
       console.log(NumOfRooms);
-      console.log(startDate);
-      console.log(endDate);
+      console.log(StartDate);
+      console.log(EndDate);
 
 
       if (Response.data["success"] == true) {
@@ -168,10 +166,10 @@ function CheckAvailability() {
                     <MDBRow>
                       <MDBCol>
                         <DatePicker
-                          selected={startDate}
+                          selected={StartDate}
                           onChange={(date) => setStartDate(date)}
-                          startDate={startDate}
-                          endDate={endDate}
+                          startDate={StartDate}
+                          endDate={EndDate}
                           selectsStart
                           placeholderText="Start Date"
                           className="custom-date-picker mx-1 py-1"
@@ -182,10 +180,10 @@ function CheckAvailability() {
                       <MDBCol>
                         {/* End Date Picker */}
                         <DatePicker
-                          selected={endDate}
+                          selected={EndDate}
                           onChange={(date) => setEndDate(date)}
-                          startDate={startDate}
-                          endDate={endDate}
+                          startDate={StartDate}
+                          endDate={EndDate}
                           selectsEnd
                           placeholderText="End Date"
                           className="custom-date-picker mx-1 py-1"

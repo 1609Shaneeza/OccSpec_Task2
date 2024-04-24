@@ -6,8 +6,8 @@ interface AvailabilityTypes {
   Email: string;
   NumOfGuests: number;
   NumOfRooms: number;
-  StartDate:string | null;
-  EndDate:string | null;
+  StartDate:Date | null;
+  EndDate:Date | null;
 }
 
 export interface CheckContextType {
