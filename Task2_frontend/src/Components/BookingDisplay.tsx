@@ -15,7 +15,7 @@ export interface RoomBookingProps {
   RoomType: string;
   Price: string;
   Availability: number;
-  capacity: number;
+  Capacity: number;
   URL: string;
 }
 
@@ -23,7 +23,7 @@ function BookingDisplay({
   RoomType,
   Price,
   Availability,
-  capacity,
+  Capacity,
   URL,
 }: RoomBookingProps) {
   const RoomsBookedContext = useContext(BookedRoomContext);
@@ -59,7 +59,7 @@ function BookingDisplay({
                 <MDBCardText>
                   <p>Price: £{Price}</p>
                   <p>Availability: {Availability}</p>
-                  <p>Capacity: {capacity}</p>
+                  <p>Capacity: {Capacity}</p>
                 </MDBCardText>
                 <button
                   className="DispayButton"

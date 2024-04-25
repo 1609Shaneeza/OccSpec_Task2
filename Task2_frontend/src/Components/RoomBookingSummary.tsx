@@ -13,6 +13,7 @@ function RoomBookingSummary() {
     const RoomsBookings = useContext(BookedRoomContext);
     const RoomBookSummary = useContext(CheckAvailabilityContext);
 
+
     const Email = RoomBookSummary?.CheckRooms?.Email;
     const NumberOfRooms = RoomBookSummary?.CheckRooms?.NumOfRooms;
     const NumberOfGuests = RoomBookSummary?.CheckRooms?.NumOfGuests;
@@ -27,11 +28,12 @@ function RoomBookingSummary() {
       const getRoomDisplayData = async () => {
         try {
           const response = await axios.post(
-            "http://localhost:5000/RoomDataDisplay",{
+            "http://localhost:5000/RoomSummaryDisplay",
+            {
               RoomType: RoomsBookings?.BookedRoom,
             }
           );
-          SetDisplayRooms(response?.data?.DisplayData || []);
+          SetDisplayRooms(response?.data?.result || []);
         } catch (error) {
           console.error("Error fetching RoomDisplayData:", error);
         }
@@ -45,18 +47,29 @@ function RoomBookingSummary() {
     return (
       <>
         <h1>Confirm Your Booking</h1>
-        <Row fluid>
-          {DisplayBookedRooms.map((RoomsData: RoomBookingsCards) => (
-            <RoomBookingCheckout
-              key={RoomsData.RoomsType}
-              RoomsType={RoomsData.RoomsType}
-              Price={RoomsData.Price}
-              Availability={RoomsData.Availability}
-              capacity={RoomsData.capacity}
-              URL={RoomsData.URL}
-            />
-          ))}
-        </Row>
+        <div className="RoomBookingSummary container text-center">
+          <div className="row">
+            <div className="col">
+              
+            </div>
+          </div>
+          <div className="row">
+            <div className="col">
+              <Row fluid>
+                {DisplayBookedRooms.map((RoomsData: RoomBookingsCards) => (
+                  <RoomBookingCheckout
+                    key={RoomsData.RoomsType}
+                    RoomsType={RoomsData.RoomsType}
+                    Price={RoomsData.Price}
+                    Availability={RoomsData.Availability}
+                    Capacity={RoomsData.Capacity}
+                    URL={RoomsData.URL}
+                  />
+                ))}
+              </Row>
+            </div>
+          </div>
+        </div>
       </>
     );
 }

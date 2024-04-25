@@ -11,7 +11,7 @@ export interface RoomBookingsCards {
   RoomsType: string;
   Price: string;
   Availability: number;
-  capacity: number;
+  Capacity: number;
   URL: string;
 }
 
@@ -19,12 +19,15 @@ function RoomBookingCheckout({
   RoomsType,
   Price,
   Availability,
-  capacity,
+  Capacity,
   URL,
 }: RoomBookingsCards) {
   return (
     <>
-      <MDBCard>
+      <MDBCard
+        className="Display px-1 py-1 mx-1 my-2"
+        style={{ width: "17rem" }}
+      >
         <MDBRipple
           rippleColor="light"
           rippleTag="div"
@@ -43,7 +46,7 @@ function RoomBookingCheckout({
           <MDBCardText>
             <p>Price: £{Price}</p>
             <p>Availability: {Availability}</p>
-            <p>Capacity: {capacity}</p>
+            <p>Capacity: {Capacity}</p>
           </MDBCardText>
         </MDBCardBody>
       </MDBCard>

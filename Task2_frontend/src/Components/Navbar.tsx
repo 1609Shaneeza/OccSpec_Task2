@@ -7,6 +7,7 @@ import {
   EDUCATION,
   HOME,
   LOGIN,
+  ROOMBOOKINGSUMMARY,
   ROOMDISPLAY,
   SIGNUP,
   TICKETS,
@@ -57,8 +58,8 @@ function Navbar() {
               <Link to={TICKETS} className="navbar-brand">
                 Book Tickets
               </Link>
-              <Link to={ROOMDISPLAY} className="navbar-brand">
-                TicketSummary
+              <Link to={ROOMBOOKINGSUMMARY} className="navbar-brand">
+                Book A Stay
               </Link>
             </Nav>
             <Nav>
@@ -66,11 +67,11 @@ function Navbar() {
                 Signup
               </Link>
             </Nav>
-            {/* <Nav>
-            <Link to={ADDINGSTAFF} className="nav-link">
+            <Nav>
+            <Link to={ROOMDISPLAY} className="nav-link">
               Add new Staff
             </Link>
-          </Nav> */}
+          </Nav>
             <Nav>
               <div className="d-flex align-items-center">
                 {isLoggedIn ? (
