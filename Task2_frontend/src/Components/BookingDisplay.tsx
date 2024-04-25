@@ -17,6 +17,7 @@ export interface RoomBookingProps {
   Availability: number;
   Capacity: number;
   URL: string;
+
 }
 
 function BookingDisplay({

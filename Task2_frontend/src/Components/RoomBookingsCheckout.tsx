@@ -6,6 +6,7 @@ import {
   MDBCardTitle,
   MDBCardText,
 } from "mdb-react-ui-kit";
+import { FormEvent } from "react";
 
 export interface RoomBookingsCards {
   RoomsType: string;
@@ -22,34 +23,39 @@ function RoomBookingCheckout({
   Capacity,
   URL,
 }: RoomBookingsCards) {
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+  };
   return (
     <>
-      <MDBCard
-        className="Display px-1 py-1 mx-1 my-2"
-        style={{ width: "17rem" }}
-      >
-        <MDBRipple
-          rippleColor="light"
-          rippleTag="div"
-          className="bg-image hover-overlay"
+      <form className="w-auto" onSubmit={handleSubmit}>
+        <MDBCard
+          className="Display px-1 py-1 mx-1 my-2"
+          style={{ width: "17rem" }}
         >
-          <MDBCardImage src={URL} fluid />
-          <a>
-            <div
-              className="mask"
-              style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
-            ></div>
-          </a>
-        </MDBRipple>
-        <MDBCardBody>
-          <MDBCardTitle>{RoomsType}</MDBCardTitle>
-          <MDBCardText>
-            <p>Price: £{Price}</p>
-            <p>Availability: {Availability}</p>
-            <p>Capacity: {Capacity}</p>
-          </MDBCardText>
-        </MDBCardBody>
-      </MDBCard>
+          <MDBRipple
+            rippleColor="light"
+            rippleTag="div"
+            className="bg-image hover-overlay"
+          >
+            <MDBCardImage src={URL} fluid className="ImageRoom" />
+            <a>
+              <div
+                className="mask"
+                style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
+              ></div>
+            </a>
+          </MDBRipple>
+          <MDBCardBody>
+            <MDBCardTitle>{RoomsType}</MDBCardTitle>
+            <MDBCardText>
+              <p>Price: £{Price}</p>
+              <p>Availability: {Availability}</p>
+              <p>Capacity: {Capacity}</p>
+            </MDBCardText>
+          </MDBCardBody>
+        </MDBCard>
+      </form>
     </>
   );
 }
