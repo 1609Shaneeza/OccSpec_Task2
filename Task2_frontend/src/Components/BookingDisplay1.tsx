@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { Row } from "react-bootstrap";
-import BookingDisplay, { RoomBookingCards } from "./BookingDisplay";
+import BookingDisplay, { RoomBookingProps } from "./BookingDisplay";
 import { CheckAvailabilityContext } from "./AvailabilityProvider";
 
 
@@ -52,7 +52,7 @@ function RoomsDisplay1() {
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-1">
             <div className="col">
               <Row fluid = {true}>
-                {Rooms.map((RoomData:RoomBookingCards) => (
+                {Rooms.map((RoomData:RoomBookingProps) => (
                   <BookingDisplay
                     key={RoomData.RoomType}
                     RoomType={RoomData.RoomType}

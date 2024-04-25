@@ -5,6 +5,7 @@ export const BookedRoomContext = createContext<RoomContextType | null>(null);
 
 function BookedRoomsProvider({ children }: { children: ReactNode }) {
   const basketItemsContext = useRooms();
+  console.log(basketItemsContext.BookedRoom);
 
   return (
     <BookedRoomContext.Provider value={basketItemsContext}>

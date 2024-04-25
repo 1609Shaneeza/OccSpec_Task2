@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 export interface RoomContextType {
   BookedRoom: { [item: string]: number };
   addToBooking: (item: string) => void;
@@ -13,23 +12,24 @@ function useRooms(): RoomContextType {
   const [BookedRoom, setBookedRoom] = useState(
     RoomObject ? JSON.parse(RoomObject) : {}
   );
+  console.log(RoomObject);
 
   const addToBooking = (item: string) => {
     console.log("Adding to basket:", item);
     console.log("Current basket:", BookedRoom);
 
-    let newBook;
+    let newBasket;
     if (Object.keys(BookedRoom).includes(item)) {
       const currentQuantity =
         typeof BookedRoom[item] === "number" ? BookedRoom[item] : 0;
-      newBook = { ...BookedRoom, [item]: currentQuantity + 1 };
+      newBasket = { ...BookedRoom, [item]: currentQuantity + 1 };
     } else {
-      newBook = { ...BookedRoom, [item]: 1 };
+      newBasket = { ...BookedRoom, [item]: 1 };
     }
 
-    console.log("New basket:", newBook);
-    setBookedRoom(newBook);
-    localStorage.setItem("basketItems", JSON.stringify(newBook));
+    console.log("New basket:", newBasket);
+    setBookedRoom(newBasket);
+    localStorage.setItem("roomItems", JSON.stringify(newBasket));
   };
 
   const removeFromBooking = (item: string) => {
@@ -41,7 +41,7 @@ function useRooms(): RoomContextType {
         newBasket = { ...BookedRoom, [item]: BookedRoom[item] - 1 };
       }
       setBookedRoom(newBasket);
-      localStorage.setItem("basketItems", JSON.stringify(newBasket));
+      localStorage.setItem("roomItems", JSON.stringify(newBasket));
     }
   };
 

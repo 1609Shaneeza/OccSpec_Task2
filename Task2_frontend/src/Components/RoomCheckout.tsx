@@ -4,9 +4,9 @@ import React, { FormEvent, useContext, useEffect, useState } from "react";
 import { MDBRow, MDBCol } from "mdb-react-ui-kit";
 import InputMask from "react-input-mask";
 import axios from "axios";
-import { TicketBookingContext } from "./TicketBookingProvider";
 import { ROOMBOOKINGSUMMARY } from "../Constants/Constants";
 import { useNavigate } from "react-router-dom";
+import { CheckAvailabilityContext } from "./AvailabilityProvider";
 // import axios from "axios";
 
 //Checkout function
@@ -16,15 +16,15 @@ function RoomCheckout() {
   const [cardNumber, setCardNumber] = useState("");
   const [expDate, setExpDate] = useState("");
   const [cvc, setCVC] = useState("");
-  const [Email, setEmail] = useState("");
-  const Tickets = useContext(TicketBookingContext || null);
+  const RoomBookSummary = useContext(CheckAvailabilityContext);
+  const Email = RoomBookSummary?.CheckRooms?.Email;
   const navigate = useNavigate();
 
   const d = new Date();
   const DateOfPayment =
     d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear();
 
-  const TicketEmail = Tickets?.TicketBooking?.Email;
+  
 
   //Document title
   useEffect(() => {
@@ -44,12 +44,6 @@ function RoomCheckout() {
   //HandleSubmit for form
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    if (TicketEmail == undefined) {
-      console.log(Email);
-    } else {
-      setEmail(TicketEmail);
-      console.log(Email);
-    }
 
     try {
       const Response = await axios.post("http://localhost:5000/Checkout", {

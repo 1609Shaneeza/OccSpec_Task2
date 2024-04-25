@@ -5,7 +5,7 @@ import { MDBRow, MDBCol } from "mdb-react-ui-kit";
 import InputMask from "react-input-mask";
 import axios from "axios";
 import { TicketBookingContext } from "./TicketBookingProvider";
-import { ROOMBOOKINGSUMMARY, TICKETSUMMARY } from "../Constants/Constants";
+import { TICKETSUMMARY } from "../Constants/Constants";
 import { useNavigate } from "react-router-dom";
 // import axios from "axios";
 
@@ -44,12 +44,7 @@ function Checkout() {
   //HandleSubmit for form
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    if (TicketEmail == undefined) {
-      console.log(Email);
-    } else {
-      setEmail(TicketEmail);
-      console.log(Email);
-    }
+
 
     try {
       const Response = await axios.post("http://localhost:5000/Checkout", {

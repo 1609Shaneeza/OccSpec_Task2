@@ -1,0 +1,18 @@
+.mask{
+    background-image: url(/workspaces/OccSpec_Task2/Task2_frontend/src/assets/greenBackground.jpg) ;
+}
+
+.Display{
+    background-image: url(/workspaces/OccSpec_Task2/Task2_frontend/src/assets/greenBackground.jpg);
+}
+
+.ImageRoom{
+    width: 270px;
+    height: 200px;
+    border-radius: 5px;
+}
+
+.DispayButton{
+    background-color: rgb(188, 226, 184);
+    border-radius: 10px;
+}

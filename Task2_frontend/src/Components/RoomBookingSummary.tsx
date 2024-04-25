@@ -8,10 +8,16 @@ import { Row } from "react-bootstrap";
 
 function RoomBookingSummary() {
 
-    const [DisplayBookedRooms, SetDisplayRooms] = useState("");
+    const [DisplayBookedRooms, SetDisplayRooms] = useState([]);
 
     const RoomsBookings = useContext(BookedRoomContext);
     const RoomBookSummary = useContext(CheckAvailabilityContext);
+
+    const Email = RoomBookSummary?.CheckRooms?.Email;
+    const NumberOfRooms = RoomBookSummary?.CheckRooms?.NumOfRooms;
+    const NumberOfGuests = RoomBookSummary?.CheckRooms?.NumOfGuests;
+    const CheckInDate = RoomBookSummary?.CheckRooms?.StartDate;
+    const CheckOutdate = RoomBookSummary?.CheckRooms?.EndDate;
 
     useEffect(() => {
       document.title = "RoomsDisplay";
@@ -20,9 +26,9 @@ function RoomBookingSummary() {
     useEffect(() => {
       const getRoomDisplayData = async () => {
         try {
-          const response = await axios.get(
+          const response = await axios.post(
             "http://localhost:5000/RoomDataDisplay",{
-
+              RoomType: RoomsBookings?.BookedRoom,
             }
           );
           SetDisplayRooms(response?.data?.DisplayData || []);
@@ -40,7 +46,7 @@ function RoomBookingSummary() {
       <>
         <h1>Confirm Your Booking</h1>
         <Row fluid>
-          {/* {DisplayBookedRooms.map((RoomsData: RoomBookingsCards) => (
+          {DisplayBookedRooms.map((RoomsData: RoomBookingsCards) => (
             <RoomBookingCheckout
               key={RoomsData.RoomsType}
               RoomsType={RoomsData.RoomsType}
@@ -49,7 +55,7 @@ function RoomBookingSummary() {
               capacity={RoomsData.capacity}
               URL={RoomsData.URL}
             />
-          ))} */}
+          ))}
         </Row>
       </>
     );
