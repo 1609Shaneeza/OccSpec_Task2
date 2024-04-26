@@ -68,11 +68,6 @@ function Navbar() {
               </Link>
             </Nav>
             <Nav>
-            <Link to={ROOMDISPLAY} className="nav-link">
-              Add new Staff
-            </Link>
-          </Nav>
-            <Nav>
               <div className="d-flex align-items-center">
                 {isLoggedIn ? (
                   // If user is logged in, show logout option

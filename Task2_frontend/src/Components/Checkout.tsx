@@ -45,6 +45,16 @@ function Checkout() {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
+    if (!TicketEmail || !Email) {
+      console.error("TicketEmail or Email is null or empty.");
+      return;
+    }
+
+    // Check if TicketEmail matches Email
+    if (TicketEmail !== Email) {
+      setEmail(TicketEmail); // Set Email to TicketEmail if they are different
+    }
+
 
     try {
       const Response = await axios.post("http://localhost:5000/Checkout", {

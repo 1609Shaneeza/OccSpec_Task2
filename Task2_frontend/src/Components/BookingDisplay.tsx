@@ -40,8 +40,8 @@ function BookingDisplay({
     <>
       <form onSubmit={handleSubmit} className="w-auto">
         <MDBCard
-          className="Display px-1 py-1 mx-1 my-2"
-          style={{ width: "17rem" }}
+          className="Display mx-1 my-1"
+          style={{ width: "18rem" }}
         >
           <MDBRow>
             <MDBCol>

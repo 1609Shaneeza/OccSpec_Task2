@@ -20,14 +20,46 @@
 
 body, html {
     height: 100%;
+    margin: 10px;
 }
 
 
 .BookingSummary{
     margin-left: auto;
+
 }
 
 
 .Booking{
-    background-color: rgb(29, 167, 29);
+    background-color: rgb(94, 189, 94);
+    width: auto;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.Booking:hover{
+    background-color: green;
+}
+
+.RoomBookingSummary{
+    border: 1px solid black;
+    border-radius: 10px;
+    
+}
+
+.Roomss{
+    align-items: center;
+    margin-left: 50px;
+}
+
+.RoomsTxt{
+    font-size: 20px;
+}
+
+.RoomBookings1{
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 0 auto; /* Center the element horizontally */
+    width: fit-content; /* Adjust width to fit content */
+    padding: 20px; 
 }

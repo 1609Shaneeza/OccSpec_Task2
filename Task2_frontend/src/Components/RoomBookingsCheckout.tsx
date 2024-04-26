@@ -49,9 +49,9 @@ function RoomBookingCheckout({
           <MDBCardBody>
             <MDBCardTitle>{RoomsType}</MDBCardTitle>
             <MDBCardText>
-              <p>Price: £{Price}</p>
-              <p>Availability: {Availability}</p>
-              <p>Capacity: {Capacity}</p>
+              <p className="RoomsTxt">Price: £{Price}</p>
+              <p className="RoomsTxt"> Availability: {Availability}</p>
+              <p className="RoomsTxt">Capacity: {Capacity}</p>
             </MDBCardText>
           </MDBCardBody>
         </MDBCard>

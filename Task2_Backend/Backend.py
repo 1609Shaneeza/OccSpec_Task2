@@ -326,6 +326,13 @@ def Payment_Details():
         except Error as e:
             print(e)
             return jsonify({'success': False, 'message': 'Internal Server Error'}), 500
+            
+                
+            return jsonify({'success': False, 'message': 'Card number does not match for the provided name'}), 400
+            
+        except Error as e:
+            print(e)
+            return jsonify({'success': False, 'message': 'Internal Server Error'}), 500
 
 ########################################################################################################
 
@@ -357,15 +364,16 @@ def Availability_EmailCheck():
 
 ########################################################################################
 # This part of the code is for the checkavailability it checks for rooms that are available
+# It checks if there are any bookings for rooms on the dates given
+#If there are rooms available it then returns them in a list to display on the website
 
 @app.route('/RoomDataDisplay', methods=['POST'])
 def DataDisplay():
     with sqlite3.connect("C:\\Users\\shane\\OneDrive\\Documents\\OccupationalSpecialism_Task2\\Task2_backend\\RZADatabase.db") as conn:
         print("Request Recieved")
-        StartDate = request.json.get('StartDate')
-        EndDate = request.json.get('EndDate')
-        print(StartDate)
-        print(EndDate)
+        StartDate_str = request.json.get('StartDate')
+        EndDate_str = request.json.get('EndDate')
+        print(StartDate_str)
         try:
             cu = conn.cursor()
             query = """Select * From RoomBookings"""
@@ -373,11 +381,35 @@ def DataDisplay():
             result = cu.fetchall()
             print(result)
             RoomsList = []
-            startDate = result[0][4]
-            print(StartDate)
-            endDate = result[0][5]
-            for i in result:
-                if startDate >= StartDate or endDate <= EndDate:
+            if result == []:
+                query = """Select * From RoomTypes"""
+                cu.execute(query)
+                result = cu.fetchall()
+                for i in result:
+                    RoomType = i[1]
+                    Price = i[2]
+                    Availability = i[3]
+                    Capacity = i[4]
+                    URL = i[5]
+                    json = {
+                        "RoomType":RoomType,
+                        "Price": Price,
+                        "Availability": Availability,
+                        "Capacity": Capacity,
+                        "URL": URL,
+                    }
+                    RoomsList.append(json)
+                return jsonify ({"DisplayData": RoomsList})
+            else:
+                StartDate_iso = StartDate_str.split("T")[0]
+                EndDate_iso = EndDate_str.split("T")[0]
+                # Convert StartDate and EndDate strings to datetime objects
+                StartDate = dt.strptime(StartDate_iso, "%Y-%m-%d").strftime("%d/%m/%Y")
+                EndDate = dt.strptime(EndDate_iso, "%Y-%m-%d").strftime("%d/%m/%Y")
+                startDate = dt.strptime(i[4], "%Y-%m-%d")
+                endDate = dt.strptime(i[5], "%Y-%m-%d")
+                print(startDate, endDate)
+                if (startDate <= StartDate <= endDate) or (startDate <= EndDate <= endDate) or (StartDate <= startDate and endDate <= EndDate):
                     print("No rooms Available")
                     return jsonify({'message': 'Rooms Not Available'})
                 else:
@@ -393,37 +425,188 @@ def DataDisplay():
                         Capacity = i[4]
                         URL = i[5]
                         json = {
-                            RoomType:RoomType,
-                            Price: Price,
-                            Availability: Availability,
-                            Capacity: Capacity,
-                            URL: URL,
+                            "RoomType":RoomType,
+                            "Price": Price,
+                            "Availability": Availability,
+                            "Capacity": Capacity,
+                            "URL": URL,
                         }
                         RoomsList.append(json)
                     return jsonify ({"DisplayData": RoomsList})
-            else:
-                query = """Select * From RoomTypes Where RoomID = ?"""
-                cu.execute(query,(roomType,))
-                result = cu.fetchall()
-                for i in result:
-                    RoomType = i[1]
-                    Price = i[2]
-                    Availability = i[3]
-                    Capacity = i[4]
-                    URL = i[5]
-                    json = {
-                        RoomType:RoomType,
-                        Price: Price,
-                        Availability: Availability,
-                        Capacity: Capacity,
-                        URL: URL,
-                    }
-                    RoomsList.append(json)
-                return jsonify ({"DisplayData": RoomsList})
+            
         except Error as e:
             print(e)
             return jsonify({'success': False, 'message': 'Internal Server Error'}), 500
 
+
+#######################################################################################
+#This card of the code checks for the list the user has selected and checks for it in the database and returns 
+
+@app.route('/RoomSummaryDisplay', methods=['POST'])
+def RoomDataDisplay():
+    with sqlite3.connect("C:\\Users\\shane\\OneDrive\\Documents\\OccupationalSpecialism_Task2\\Task2_backend\\RZADatabase.db") as conn:
+        print("Request Received")
+        RoomType = request.json.get('RoomType')
+        room_types_list = list(RoomType.keys())
+        try:
+            print("Working")
+            cu = conn.cursor()
+            RoomsList = []
+            for roomType in RoomType.items():
+                roomsTypes = roomType[0]
+                query = """SELECT * FROM RoomTypes WHERE RoomType = ?"""
+                cu.execute(query, (roomsTypes,))
+                result = cu.fetchall()
+                print(result)
+                if result:
+                    for i in result:
+                        RoomType = i[1]
+                        Price = i[2]
+                        Availability = i[3]
+                        Capacity = i[4]
+                        URL = i[5]
+                        json = {
+                            "RoomType": RoomType,
+                            "Price": Price,
+                            "Availability": Availability,
+                            "Capacity": Capacity,
+                            "URL": URL,
+                        }
+                        RoomsList.append(json)
+                else:
+                    # Handle the case where the room type does not exist in the database
+                    error_json = {
+                        "RoomType": roomsTypes,
+                        "Price": "N/A",
+                        "Availability": "N/A",
+                        "Capacity": "N/A",
+                        "URL": "N/A",
+                    }
+                    RoomsList.append(error_json)
+            return jsonify({"result": RoomsList})
+        except Error as e:
+            print(e)
+            return jsonify({'success': False, 'message': 'Internal Server Error'}), 500
+        
+###############################################################################################
+
+##Checks if the user has selected some Rooms fto book
+
+@app.route('/RoomDataCheck', methods=['POST'])
+def RoomDataCheck():
+    with sqlite3.connect("C:\\Users\\shane\\OneDrive\\Documents\\OccupationalSpecialism_Task2\\Task2_backend\\RZADatabase.db") as conn:
+        print("Request Received")
+        RoomType = request.json.get('RoomType')
+        room_types_list = list(RoomType.keys())
+        print("request recieved")
+        print(RoomType)
+        if RoomType == []:
+            print("No rooms Selected")
+            return jsonify ({'success': False, 'message':'No Rooms Selected'})
+        else:
+            print("Rooms Selected")
+            return jsonify ({'success': True, 'message':'Rooms Se'})
+
+
+
+###############################################################################################
+##Add Room Booking to Database
+
+@app.route('/RoomBookingAddedToDatabase', methods=['POST'])
+def RoomsBookings():
+    with sqlite3.connect("C:\\Users\\shane\\OneDrive\\Documents\\OccupationalSpecialism_Task2\\Task2_backend\\RZADatabase.db") as conn:
+        print("Request Received")
+        Email = request.json.get('Email')
+        NumberOfGuests = request.json.get('NumberOfGuests')
+        NumberOfRooms = request.json.get('NumberOfRooms')
+        CheckInDate = request.json.get('CheckInDate')
+        CheckOutDate = request.json.get('CheckOutDate')
+        RoomType = request.json.get('RoomType')
+        room_types_list = list(RoomType.keys())
+        try:
+            cu = conn.cursor()
+            query = """Select CustomerID From CustomerDetails Where Email = ?"""
+            cu.execute(query,(Email,))
+            result = cu.fetchall()
+            CustomerID = result[0][0]
+            query = """Select * From PaymentInfo Where CustomerID = ?"""
+            cu.execute(query,(CustomerID,))
+            result = cu.fetchall()
+            PaymentID = result[0][0]
+            print(PaymentID)
+            CustID = result[0][3]
+            for roomType in RoomType.items():
+                roomsTypes = roomType[0]
+                query = """SELECT RoomID FROM RoomTypes WHERE RoomType = ?"""
+                cu.execute(query, (roomsTypes,))
+                result = cu.fetchall()
+                RoomID = result[0][0]
+                print(RoomID)
+                entry = """Insert Into RoomBookings(RoomID, CustomerID, NumberOfRooms, DateFrom, DateTo, PaymentID) values(?,?,?,?,?,?)"""
+                cu.execute(entry, (RoomID, CustomerID, NumberOfRooms, CheckInDate, CheckOutDate, PaymentID))
+                conn.commit()
+                return jsonify ({'message': 'Booking Confirmed', 'success': True})
+        except Error as e:
+            print(e)
+            return jsonify({'success': False, 'message': 'Internal Server Error'}), 500
+        
+
+##############################################################################################
+
+#Room Checkout
+
+
+
+
+
+
+
+
+###########################################################################################
+#This code Adds staff to the Database
+
+# @app.route('/AddingStaff', methods=['POST'])
+# def Adding_Staff():
+#     with sqlite3.connect("C:\\Users\\shane\\OneDrive\\Documents\\OccupationalSpecialism_Task2\\Task2_backend\\RZADatabase.db") as conn:
+#         print("Request Recieved")
+#         StaffName = request.json.get('StaffName')
+#         StaffSurname = request.json.get('StaffSurname')
+#         StaffDOB = request.json.get('StaffDOB')
+#         StaffRole = request.json.get('StaffRole')
+#         StaffEmail = request.json.get('StaffEmail')
+#         StaffUsername = request.json.get('StaffUsername')
+#         if StaffUsername.isalnum and len(StaffUsername) in range(5,16):
+#             password = request.json.get('Password')
+#             passwords = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9@#$%^_&-+=]+){5,16}$"
+#             if re.match(passwords, password):
+#                 passwordEncode = password.encode("UTF-8")
+#                 confirmPassword = request.json.get('ConfirmPassword').encode("UTF-8")
+#             else:
+#                 return jsonify({'message':'Password not strong enough'})
+#         else:
+#             return jsonify({'message': 'Username must be between 5 to 16 characters'})
+#         confirmPassword = request.json.get('ConfirmPassword').encode("UTF-8")
+#         try:
+#             cu = conn.cursor()
+#             query = """Select Username From CustomerDetails where Username = ?"""
+#             cu.execute(query, (StaffUsername,))
+#             result = cu.fetchall()
+#             if len(result) > 0:
+#                 return jsonify({'message': 'Account already exists'})
+#             else:
+#                 if passwordEncode == confirmPassword:
+#                     salt = gensalt()
+#                     hashedPassword = hashpw(passwordEncode, salt)
+#                     entry = """Insert Into StaffDetails(StaffName, StaffSurname, DOB, Email, StaffRole, Username, Password) Values(?,?,?,?,?,?,?)"""
+#                     cu.execute(entry, (StaffName, StaffSurname, StaffDOB, StaffEmail, StaffRole, StaffUsername, hashedPassword))
+#                     conn.commit()
+#                     return jsonify({'Success':True, 'message': 'Account Created'})
+#                 else:
+#                     return jsonify({'Success':False,'message': 'Passwords do not match'})
+#         except Error as e:
+#             print("Error here.")
+#             print(e)
+#             return jsonify({'success': False, 'message': 'Internal Server Error'}), 500
 
 
 if __name__ == "__main__":

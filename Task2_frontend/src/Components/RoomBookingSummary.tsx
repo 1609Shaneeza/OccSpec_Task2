@@ -86,11 +86,13 @@ function RoomBookingSummary() {
 
     return (
       <>
+        <br></br>
         <h1>Confirm Your Booking</h1>
+        <br></br>
         <form onSubmit={handleSubmit}>
-          <div className="RoomBookingSummary container text-center">
+          <div className="RoomBookingSummary container text-center col col-lg-9">
             <div className="row">
-              <div className="col">
+              <div className="Roomss col">
                 <Row fluid>
                   {DisplayBookedRooms.map((RoomsData: RoomBookingsCards) => (
                     <RoomBookingCheckout
@@ -107,11 +109,14 @@ function RoomBookingSummary() {
             </div>
             <div className="row">
               <div className="col">
-                <p>Email: {Email}</p>
-                <p>Number Of Guests: {NumberOfGuests}</p>
-                <p>Number of Rooms: {NumberOfRooms}</p>
-                <p>Check-in Date: {CheckInDate}</p>
-                <p>Check-out Date: {CheckOutDate}</p>
+                <br></br>
+                <h2>Booking Details</h2>
+                <br></br>
+                <p className="RoomsTxt">Email: {Email}</p>
+                <p className="RoomsTxt">Number Of Guests: {NumberOfGuests}</p>
+                <p className="RoomsTxt">Number of Rooms: {NumberOfRooms}</p>
+                <p className="RoomsTxt">Check-in Date: {CheckInDate}</p>
+                <p className="RoomsTxt">Check-out Date: {CheckOutDate}</p>
                 <br />
                 <p></p>
               </div>
@@ -119,8 +124,13 @@ function RoomBookingSummary() {
             <button type="submit" className="Booking">
               Confirm Booking
             </button>
+            <br></br>
+            <br></br>
+            <br></br>
           </div>
+          <br></br>
         </form>
+        <br></br>
       </>
     );
 }
