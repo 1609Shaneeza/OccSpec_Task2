@@ -1,10 +1,12 @@
+import React, { FormEvent, useContext, useState } from "react";
 import { DatePicker } from "@carbon/react";
 import { MDBCol, MDBRow } from "mdb-react-ui-kit";
-import { FormEvent, useContext, useState } from "react";
 import { TicketBookingContext } from "./TicketBookingProvider";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { CHECKOUT } from "../Constants/Constants";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function TicketsBookings() {
   const [Email, setEmail] = useState("");
@@ -17,28 +19,19 @@ function TicketsBookings() {
   const Ticket_Context = useContext(TicketBookingContext);
   const navigate = useNavigate();
 
-    // console.log("EdVisit:", EdVisit);
-    // console.log("Email:", Email);
-    // console.log("Adults:", NumOfAdult);
-    // console.log("Children:", NumOfChildren);
-    // console.log("Date:", date);
-
-
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     setMessage("");
 
     try {
-      const Response = await axios.post(
+      const response = await axios.post(
         "http://localhost:5000/EmailCheckTicketsBooking",
         {
-          Email: Email,
+          Email,
         }
       );
 
-      setMessage(JSON.stringify(Response.data));
-
-      if (Response.data["success"] == true) {
+      if (response.data.success) {
         console.log("Value of EdVisit is: " + EdVisit);
         Ticket_Context?.setTicketBooking({
           Type,
@@ -48,39 +41,36 @@ function TicketsBookings() {
           NumOfAdult,
           NumOfChildren,
         });
+        toast.success("Booking Successful! Redirecting to checkout...");
         navigate(CHECKOUT);
       } else {
-        setMessage("Email doesnot exists")
+        setMessage("Email does not exist");
+        toast.error("Email does not exist");
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         setMessage(error.message);
+        toast.error(error.message);
       } else {
         setMessage(String(error));
+        toast.error(String(error));
       }
     }
   };
 
-  // console.log("EdVisit:",Ticket_Context?.TicketBooking?.EdVisit);
-  // console.log("Email:", Ticket_Context?.TicketBooking?.Email);
-  // console.log("Adults:", Ticket_Context?.TicketBooking?.NumOfAdult);
-  // console.log("Children:", Ticket_Context?.TicketBooking?.NumOfChildren);
-  // console.log("Date:", Ticket_Context?.TicketBooking?.date);
-
-
-
   return (
     <>
-      <br></br>
+      <ToastContainer />
+      <br />
       <h1>Book Tickets for the RZA Zoo</h1>
       <div className="Container">
         <div className="row col col-lg-9 mx-5">
           <div className=" Tickets col col-lg-4">
             <h3 className="Prices text-center fs-2">Ticket Prices</h3>
-            <br></br>
+            <br />
             <p className="Prices text-center fs-4">Adult - £20</p>
             <p>Adults Over the Age of 16</p>
-            <br></br>
+            <br />
             <p className="Prices text-center fs-4">Child - £10</p>
             <p>Children Under the Age of 16</p>
           </div>
@@ -112,7 +102,7 @@ function TicketsBookings() {
                     </DatePicker>
                   </MDBCol>
                   <MDBCol className="Visit">
-                    <p>Is this a Educational Visit ?</p>
+                    <p>Is this an Educational Visit?</p>
                     <select
                       className="form-select"
                       aria-label="Default select"
@@ -150,19 +140,19 @@ function TicketsBookings() {
                     />
                   </MDBCol>
                 </MDBRow>
-                <br></br>
-                <br></br>
+                <br />
+                <br />
                 <button className="Signup" type="submit">
                   Book Tickets
                 </button>
-                <br></br>
+                <br />
                 {Message}
               </form>
             </div>
           </div>
         </div>
       </div>
-      <br></br>
+      <br />
     </>
   );
 }

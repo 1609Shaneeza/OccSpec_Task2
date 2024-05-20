@@ -1,6 +1,76 @@
-.Checkout{
-    border: 1px solid #000000;
-    background-image: url(/workspaces/OccSpec_Task2/Task2_frontend/src/assets/greenBackground.jpg);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+/* Updated styles for RoomCheckout */
+.Checkout {
+  background-color: #e6f2e6;
+  padding: 20px;
   border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+h1 {
+  text-align: center;
+  color: #4caf50;
+}
+
+.TicketSummary .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.TicketSummary .col {
+  width: 100%;
+}
+
+.MDBRow {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.MDBRow p {
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.MDBCol {
+  flex: 1;
+  min-width: calc(50% - 10px);
+  margin: 5px;
+}
+
+.MDBCol input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+button.Login {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button.Login:hover {
+  background-color: #45a049;
+}
+
+@media (max-width: 768px) {
+  .MDBCol {
+    min-width: 100%;
+  }
+}
+

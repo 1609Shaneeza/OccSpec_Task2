@@ -13,56 +13,62 @@ import axios from "axios";
 import { AccountCredentialsContext } from "./CredentialsProvider";
 import { useNavigate } from "react-router-dom";
 import { DASHBOARD, HOME, LOGIN } from "../Constants/Constants";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+interface ResponseData {
+  success: boolean;
+  Account: boolean;
+}
 
 function Login() {
   useEffect(() => {
     document.title = "Login";
-  });
+  }, []);
 
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
   const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
   const credentials_Context = useContext(AccountCredentialsContext);
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    setMessage("");
 
     try {
-      const Response = await axios.post("http://localhost:5000/Login", {
-        Email: Email,
-        Password: Password,
-      });
+      const response = await axios.post<ResponseData>(
+        "http://localhost:5000/Login",
+        {
+          Email,
+          Password,
+        }
+      );
 
-      if (Response.data["success"] && Response.data["Account"] == true) {
+      if (response.data.success && response.data.Account) {
         credentials_Context?.setAccountDetails({ Email, Password });
         navigate(HOME);
-      } else if (
-        Response.data["success"] &&
-        Response.data["Account"] == false
-      ) {
+        toast.success("Login Successful");
+      } else if (response.data.success && !response.data.Account) {
         credentials_Context?.setAccountDetails({ Email, Password });
         navigate(DASHBOARD);
+        toast.success("Login Successful");
       } else {
-        console.log("Doesnot exist");
-        navigate(LOGIN);
+        console.log("Incorrect Login Details");
+        toast.error("Email Does not Exist");
       }
-
-      setMessage(JSON.stringify(Response.data));
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        setMessage(error.message);
+        toast.error(error.message);
       } else {
-        setMessage(String(error));
+        toast.error(String(error));
       }
     }
   };
 
   return (
     <>
-      <br></br>
+      <ToastContainer />
+      <br />
       <div className="Container text-center">
         <div className="login">
           <form onSubmit={handleSubmit}>
@@ -78,7 +84,7 @@ function Login() {
                   </MDBCol>
 
                   <MDBCol lg="6" md="12">
-                    <MDBCardBody className=" Loginn d-flex flex-column">
+                    <MDBCardBody className="Loginn d-flex flex-column">
                       <div className="d-flex flex-row mt-2">
                         <span className="h1 fw-bold mb-auto">
                           Riget Zoo Adventures
@@ -99,7 +105,7 @@ function Login() {
                         type="email"
                         required
                       />
-                      <br></br>
+                      <br />
                       <p>Password</p>
                       <input
                         className="Password"
@@ -108,7 +114,7 @@ function Login() {
                         type={showPass ? "text" : "password"}
                         required
                       />
-                      <br></br>
+                      <br />
                       <div className="d-flex justify-content-center mb-4">
                         <MDBCheckbox
                           name="flexCheck"
@@ -127,7 +133,6 @@ function Login() {
                 </MDBRow>
               </MDBCard>
             </MDBContainer>
-            {message}
           </form>
         </div>
       </div>
